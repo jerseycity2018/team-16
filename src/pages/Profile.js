@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import '../App.css';
 import firebase, { auth } from '../firebase.js';
 import { Redirect } from 'react-router-dom'
-import { Button, Col, Row, Container, Collapse, 
-  Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, 
+import { Button, Col, Row, Container, Collapse,
+  Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,
   UncontrolledDropdown, DropdownToggle, DropdownMenu,DropdownItem,
 } from 'reactstrap';
 
 
 class Profile extends Component {
   constructor(props) {
-    super(props); 
+    super(props);
     const user = firebase.auth().currentUser;
     this.state = {
       user: user,
@@ -25,8 +25,8 @@ class Profile extends Component {
     auth.signOut()
   }
 
+//Testing git.
 
-  
   componentDidMount(){
     const currentUser = firebase.auth().currentUser
     firebase.auth().onAuthStateChanged(user => {
@@ -45,7 +45,7 @@ class Profile extends Component {
 
       })
 
-      
+
 
     }
 
