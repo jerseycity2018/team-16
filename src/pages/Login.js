@@ -6,7 +6,7 @@ import firebase, { auth, provider } from '../firebase.js'
 
 import { Container , Row, Col, Button, 
     Form, FormGroup,FormText, 
-    Input,FormFeedback
+    Input, FormFeedback, Radio, ControlLabel, FormControl, Checkbox
   } from 'reactstrap';
 
 
@@ -79,18 +79,28 @@ class Login extends Component {
   
       }
 
-
     render() {
       return (
+
         <div className="Sign">
                 <h1>  Make NYCHAS Greener </h1>
 
                 {this.state.newUser ? 
                 (
                     <Container>
+                    <form> 
+                    <FormGroup>
+                    <Checkbox inline>1</Checkbox> <Checkbox inline>2</Checkbox>{' '}
+                    <Checkbox inline>3</Checkbox>
+                    </FormGroup>
+                    </form>
                         <h1>Sign Up </h1>
                         <Button onClick={this.switch}>Sign Up</Button>
                     </Container>
+                    
+              
+                    
+      
                 )
                 :
                 (
@@ -98,8 +108,13 @@ class Login extends Component {
                         <h1> Log In </h1>
                     </Container>
                 )}
-        </div>
-      );
+    
+
+                
+
+                
+            </div>
+        );
     }
   }
 
