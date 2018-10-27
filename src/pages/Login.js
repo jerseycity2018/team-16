@@ -36,6 +36,27 @@ class Login extends Component {
     handleSubmit(event) {
       event.preventDefault();
 
+      //TODO: FORM VALIDATION
+      this.setState({
+        inprogress:true,
+      });
+      
+      auth.createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .then(() => {
+          firebase.auth().currentUser.updateProfile({
+            displayName: this.state.name
+          }).then(() => { 
+            this.setState({
+              user: firebase.auth().currentUser,
+            });
+            this.addUserToDatabase();
+          });;
+        })
+        .catch(function(error) {
+        // Handle Errors here.
+        console.log(error.code + ": " + error.message)
+        });
+
     }
 
     switch(){
@@ -47,12 +68,10 @@ class Login extends Component {
         
         this.setState({user:firebase.auth().currentUser})
         firebase.database().ref('users/' + user.uid).push({
-          name: "",
-          firstName: "",
-          lastName: "",
-          email: "",
-          provider: "",
+          name: this.state.name,
+          email: this.state.email,
           joined: Date.now(),
+          language:"",
           NYCHA:{
               location:"",
               floor:0
@@ -64,12 +83,10 @@ class Login extends Component {
           referrals:{
             count:0,
             referrer:null
-          },
-          language:"",
-
+          }
         })
         .then(() => {
-  
+            this.setState({inprogress:false})
         })
         .catch(function(error) {
         // Handle Errors here.
@@ -96,6 +113,19 @@ class Login extends Component {
                     </form>
                         <h1>Sign Up </h1>
                         <Button onClick={this.switch}>Sign Up</Button>
+                        <Form>
+                            <Container>
+                                <FormGroup row>
+                                <Col sm={4}>
+                                    <Input name="name" type="text" placeholder="name" value={this.state.name} onChange={this.handleChange} />
+                                </Col>
+                                <Col sm={4} >
+                                    <Input name="email" type="text" placeholder="email@domain.com" value={this.state.email} onChange={this.handleChange} />
+                                </Col>
+                                </FormGroup>
+                                
+                            </Container>
+                        </Form>
                     </Container>
                     
               
