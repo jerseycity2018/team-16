@@ -9,6 +9,7 @@ import Profile from './pages/Profile.js';
 import Shop from "./pages/Shop.js";
 import Leaderboard from "./pages/Leaderboard.js";
 import Settings from "./pages/Settings.js";
+import Faq from "./pages/Faq.js";
 
 import App from './App.js';
 
@@ -25,6 +26,7 @@ const loadApp = function(){
                     <Route path="/shop" component={Shop}/>
                     <Route path="/leaderboard" component={Leaderboard}/>
                     <Route path="/settings" component={Settings}/>
+                    <Route path="/faq" component={Faq}/>
                 </Switch>
             </BrowserRouter>
       ), document.getElementById('root'))

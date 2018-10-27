@@ -69,6 +69,10 @@ export default class Leaderboard extends Component {
       })
     }
 
+
+    const userRef = firebase.database().ref('users').on('value', (snapshot) => {
+      
+    })
     let leaderInfo = [];
     const leaderRef = firebase.database().ref('leaderboard/byUser').orderByValue().limitToFirst(5);
     leaderRef.on('value', (snapshot) => {
