@@ -6,9 +6,9 @@ import firebase, { auth, provider } from '../firebase.js'
 
 import { Container , Row, Col, Button, Collapse,
     Form, FormGroup, Input, Check, Label
-  } from 'reactstrap';
+  } from 'reactstrap'
 
-  import Leaderboard from './Leaderboard.js';
+import Profile from './Profile.js';
 
 
 class Login extends Component {
@@ -43,8 +43,8 @@ class Login extends Component {
       });
     }
 
-    signup(event) {
 
+    signup(event) {
       event.preventDefault();
 
       //TODO: FORM VALIDATION
@@ -152,6 +152,7 @@ class Login extends Component {
                             <Col className = "text-center">
                                 <h1> Login </h1>
                                 <h1> {this.state.newUser ? "Sign Up!" : "Log In"} </h1>
+
                             </Col>
                         </Row>
 
@@ -248,12 +249,6 @@ class Login extends Component {
                         </Form>
 
                     </Container>
-
-
-
-
-
-
             </div>
         );
     }

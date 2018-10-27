@@ -4,3 +4,50 @@
     margin: 0 auto;
 }
 
+
+body{
+    background-color: #fefbd8;
+}
+
+
+.circle{
+     width: 350px;
+     height: 350px;
+     text-align: center;
+     vertical-align: middle;
+     font-size: 50%;
+     position: absolute;
+     margin-left: 425px;
+     margin-top: 30px;
+     border-radius: 50%;
+     background-color: #46C421;
+}
+
+.content {
+        margin: 0;
+    }
+        .content-block {
+            height: 185px;
+            font-family: 'Open Sans', Lucida Sans Console, sans-serif;
+            color: #000000;
+            position: relative;
+            font-size: 17px;
+            text-align: center;
+            margin: 0 100px 0 100px;
+            padding: 5px 0 5px 0;
+        }
+
+        .content-block p {
+           margin: 0;
+           position: absolute;               
+           top: 50%;                         
+           transform: translate(-920%, 150%) 
+        }
+
+.cal-container{
+    width:100%;
+    position: static;
+    margin:225px auto ;  
+    text-align:center;
+}
+

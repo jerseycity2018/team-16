@@ -4,7 +4,7 @@ import firebase, { auth } from '../firebase.js';
 import { Redirect, Link} from 'react-router-dom'
 import { Button, Col, Row, Container, Collapse,
   Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,
-  UncontrolledDropdown, DropdownToggle, DropdownMenu,DropdownItem, Table
+  UncontrolledDropdown, DropdownToggle, DropdownMenu,DropdownItem, Table,
 } from 'reactstrap';
 
 import Menu from "../Menu.js";
@@ -34,7 +34,7 @@ class Profile extends Component {
       collapsed: !this.state.collapsed
     });
   }
-
+    
   componentDidMount(){
     const currentUser = firebase.auth().currentUser
     firebase.auth().onAuthStateChanged(user => {
@@ -46,14 +46,21 @@ class Profile extends Component {
       userdata.on('value', (snapshot) => {
           this.setState({info: snapshot.val()})
       })
-
+    
     }
 
   }
 
   render() {
       return (
+        
         <div className = "App" id="profile">
+
+            <Container>
+            <div class = "background-white"></div>
+                <h1> My Profile</h1>
+            
+
             { !firebase.auth().currentUser &&
                     (<Redirect push to={{
                         pathname: '/login',
@@ -62,8 +69,8 @@ class Profile extends Component {
                     }} /> )
             }
 
-            <Menu />
-            <Container>
+            <Menu/>
+            </Container>
 
             {this.state.info &&
                 <Container>
@@ -98,8 +105,33 @@ class Profile extends Component {
                     </Row>
                 </Container>
             }
-            </Container>
+            
+            <Container>
+        <div class="body"></div>
+        <Row>
+        <div class = "circle"></div>
+        {
+        <div class="content">
+            <div class="content-block">
+                <p>You have x points!</p>
+            </div>
         </div>
+        }
+        </Row>
+        
+        <div class="cal-container">
+        <iframe src="https://calendar.google.com/calendar/embed?src=tbashar09%40gmail.com&ctz=America%2FNew_York" 
+        border="0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        </div>
+        
+        
+
+            
+        
+        </Container>
+        </div>
+
+      
 
       );
     }
