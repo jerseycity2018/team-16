@@ -126,10 +126,20 @@ class Login extends Component {
                                     <Input name="email" type="text" placeholder="Confirm Email" value={this.state.email} onChange={this.handleChange} />
                                 </Col>
                                 </FormGroup>
+                                
+                            {/* Get password from user */}
+                                <FormGroup row>
+                                <Col sm={4} >
+                                    <Input name="password" type="text" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
+                                </Col>
+                                <Col sm={4}>
+                                    <Input name="password" type="text" placeholder="Confirm Password" value={this.state.password} onChange={this.handleChange} />
+                                </Col>
+                                </FormGroup>
                             
                             <FormGroup>
                             <Label for="Borough Name">Building Name</Label>
-                            <Input type="select" name="Borough Name" id="Borough Name">
+                            <Input type="select" name="Borough Name" id="Borough Name" defaultValue = "Borough Name">
                             <option>Brooklyn</option>
                             <option>Bronx</option>
                             <option>Manhatten</option>
