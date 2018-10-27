@@ -68,22 +68,20 @@ class Leaderboard extends Component {
       })
     }
 
-    // const usersRef = firebase.database().ref('leaderboard').child('byUsers').orderByValue();
-    // usersRef.on('value', (snapshot) => {
-    //         let newState = [];
-    //         console.log(snapshot)
-    //         snapshot = snapshot.val();
-    //         snapshot.forEach(function(childSnapshot) {
-    //             newState.push({
-    //                 user: childSnapshot.uid,
-    //                 points: childSnapshot.val().lifetime,
-    //             });
-    //         });
+    const usersRef = firebase.database().ref('leaderboard').child('byUser').orderByValue().limitToLast(5);
+    usersRef.on('value', (snapshot) => {
+            let newState = [];
+            let data = snapshot.val();
 
-    //     this.setState({
-    //         userRankings: newState
-    //     });
-    // });
+            snapshot.forEach( (leader) => {
+              newState.push(leader.key);
+            })
+
+
+        this.setState({
+            userRankings: newState
+        });
+    });
 
 
 
