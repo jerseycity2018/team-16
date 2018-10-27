@@ -4,6 +4,8 @@ import { Route, BrowserRouter, Switch} from 'react-router-dom'
 import firebase from './firebase.js';
 
 import Login from './pages/Login.js';
+import Admin from './pages/Admin.js';
+import Profile from './pages/Profile.js';
 import App from './App.js';
 
 
@@ -14,6 +16,8 @@ const loadApp = function(){
                 <Switch>
                     <Route exact path="/" component={App}/>
                     <Route path="/login" component={Login}/>
+                    <Route path="/profile" component={Profile}/>
+                    <Route path="/admin" component={Admin}/>
                 </Switch>
             </BrowserRouter>
       ), document.getElementById('root'))

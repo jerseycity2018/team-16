@@ -18,7 +18,11 @@ class Login extends Component {
         confirmEmail: '',
         password: '',
         confirmPassword: '',
-        newUser: true,
+        location: '',
+        floor: 0,
+        referrer: null,
+        language: '',
+        newUser: false,
         errors:{}
       };
 
@@ -72,8 +76,8 @@ class Login extends Component {
           joined: Date.now(),
           language:"",
           NYCHA:{
-              location:"",
-              floor:0
+              location:this.state.location,
+              floor:this.state.floor
           },
           points:{
             lifetime:0,
@@ -81,8 +85,11 @@ class Login extends Component {
           },
           referrals:{
             count:0,
-            referrer:null
-          }
+            referrer:this.state.referrer
+          },
+          language:this.state.language,
+          role:"user"
+
         })
         .then(() => {
             this.setState({inprogress:false})
@@ -160,7 +167,7 @@ class Login extends Component {
                             </Container>
                         </Form>
                         
-                        <Button onClick={this.switch}>Sign Up</Button>
+                        <Button onClick={this.switch}>Returning User? Sign In</Button>
                     </Container>
  
       
@@ -169,6 +176,7 @@ class Login extends Component {
                 (
                     <Container>
                         <h1> Log In </h1>
+                        <Button onClick={this.switch}>New User? Sign Up</Button>
                     </Container>
                 )}
     
