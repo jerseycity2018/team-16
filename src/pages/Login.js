@@ -210,10 +210,6 @@ class Login extends Component {
                     </Container>
 
 
-
-            <Testprofile/>
-                
-
                 
             </div>
         );
