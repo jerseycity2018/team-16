@@ -107,17 +107,9 @@ class Profile extends Component {
             }
             
             <Container>
-        <div class="body"></div>
-        <Row>
-        <div class = "circle"></div>
-        {
-        <div class="content">
-            <div class="content-block">
-                <p>You have x points!</p>
-            </div>
+        <div class = "circle">
+
         </div>
-        }
-        </Row>
         
         <div class="cal-container">
         <iframe src="https://calendar.google.com/calendar/embed?src=tbashar09%40gmail.com&ctz=America%2FNew_York" 
