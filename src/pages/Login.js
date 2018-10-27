@@ -35,10 +35,12 @@ class Login extends Component {
     }
 
     handleChange(event) {
+        console.log(event.target.value)
       this.setState({
         [event.target.name]: event.target.value
       });
     }
+
     signup(event) {
 
       event.preventDefault();
@@ -86,13 +88,11 @@ class Login extends Component {
         let user = firebase.auth().currentUser;
 
         this.setState({user:firebase.auth().currentUser})
-        firebase.database().ref('users/').child(user.uid).push({
+        firebase.database().ref('users/').child(user.uid).update({
           name: this.state.name,
           email: this.state.email,
           joined: Date.now(),
-          language:"",
           location:this.state.location,
-          floor:this.state.floor,
           total:0,
           balance:0,
           referralCount:0,
@@ -192,12 +192,18 @@ class Login extends Component {
                                     <FormGroup row>
                                         <Col className = "col-centered" sm={6}>
                                             <Label for="Borough Name">Building Name</Label>
-                                            <Input type="select" name="Borough Name" id="Borough Name" defaultValue = "Borough Name">
-                                                <option>Brooklyn</option>
-                                                <option>Bronx</option>
-                                                <option>Manhatten</option>
-                                                <option>Staten Island</option>
+                                            <Input type="select" name="location" id="Borough Name"  value={this.state.location} onChange={this.handleChange}>
+                                                <option value = "">Select</option>
+                                                <option value = "brooklyn">Brooklyn</option>
+                                                <option value = "bronx">Bronx</option>
+                                                <option value = "manhattan">Manhatten</option>
+                                                <option value = "statenisland">Staten Island</option>
                                             </Input>
+                                        </Col>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                        <Col className = "col-centered"sm={6}>
+                                            <Input name="language" type="text" placeholder="Preferred Language" value={this.state.language} onChange={this.handleChange} />
                                         </Col>
                                     </FormGroup>
                                     <FormGroup row>

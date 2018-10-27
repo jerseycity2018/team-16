@@ -44,13 +44,7 @@ class Profile extends Component {
     if(currentUser){
       const userdata = firebase.database().ref('users/' + currentUser.uid);
       userdata.on('value', (snapshot) => {
-        let data = snapshot.val();
-        let tier;
-        //console.log(data);
-        for (let post in data) {
-          this.setState({info: data[post]})
-        }
-
+          this.setState({info: snapshot.val()})
       })
 
     }

@@ -5,11 +5,12 @@ import { Redirect } from 'react-router-dom'
 import { Button, Col, Row, Container, Collapse,
   Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,
   UncontrolledDropdown, DropdownToggle, DropdownMenu,DropdownItem,
+  Table
 } from 'reactstrap';
 
 import Menu from "../Menu.js";
 
-class Leaderboard extends Component {
+export default class Leaderboard extends Component {
   constructor(props) {
     super(props);
     const user = firebase.auth().currentUser;
@@ -17,7 +18,7 @@ class Leaderboard extends Component {
       user: user,
       loading:true,
       info: null,
-      userRankings: null,
+      leaderData:[]
     };
     this.logout = this.logout.bind(this);
     this.findUserRank = this.findUserRank.bind(this);
@@ -68,41 +69,72 @@ class Leaderboard extends Component {
       })
     }
 
+    let leaderInfo = [];
     const usersRef = firebase.database().ref('leaderboard').child('byUser').orderByValue().limitToLast(5);
     usersRef.on('value', (snapshot) => {
-            let newState = [];
+
+        let data = snapshot.val();
+
+        snapshot.forEach( (leader) => {
+          firebase.database().ref('users').child(leader.key).once('value',  (snapshot) => {
             let data = snapshot.val();
-
-            snapshot.forEach( (leader) => {
-              newState.push(leader.key);
+            console.log(data)
+            leaderInfo.push({
+              name: data.name,
+              points:data.total,
+              location:data.location
             })
-
+          });
+        })
 
         this.setState({
-            userRankings: newState
+            leaderData: leaderInfo
         });
-    });
-
+    })
 
 
 
   }
 
   render() {
+      console.log(this.state.leaderData)
       return (
         <div className = "App" id="profile">
             <Menu />
             <Container>
-              Leaderboard
-              {this.state.userRankings && this.state.userRankings[0]}
+              <Row>
+                  <Col className = "text-center">
+                      <h1>  Leaderboard </h1>
+                  </Col>
+              </Row>
+            
+
+              <Table striped>
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Borough</th>
+                    <th>Lifetime Points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.leaderData.map((user,i) => {
+                    return(
+                    <tr key = {i}>
+                      <th scope="row">{i+1}</th>
+                      <td> {user.name} </td>
+                      <td> {user.location} </td>
+                      <th> {user.points} </th>
+                    </tr>
+                    );
+                    })}
+
+                </tbody>
+              </Table>
             </Container>
         </div>
-        );
+
+    );
     }
 }
-
-
-
-
-
-export default Leaderboard;
