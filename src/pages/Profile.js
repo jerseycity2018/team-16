@@ -45,8 +45,6 @@ class Profile extends Component {
 
       })
 
-
-
     }
 
   }
@@ -56,6 +54,9 @@ class Profile extends Component {
         <div className = "App" id="profile">
             <Container>
                 <h1> My Profile</h1>
+                <Row>
+                    <p> push test</p>
+                </Row>
             </Container>
         </div>
 
