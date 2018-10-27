@@ -10,6 +10,7 @@ import { Container , Row, Col, Button, Collapse,
 
 import Profile from './Profile.js';
 
+
 class Login extends Component {
     constructor(props) {
       super(props);
@@ -28,17 +29,20 @@ class Login extends Component {
       };
 
       this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+      this.signup = this.signup.bind(this);
+      this.login = this.login.bind(this);
       this.switch = this.switch.bind(this);
     }
 
     handleChange(event) {
+        console.log(event.target.value)
       this.setState({
         [event.target.name]: event.target.value
       });
     }
 
-    handleSubmit(event) {
+
+    signup(event) {
       event.preventDefault();
 
       //TODO: FORM VALIDATION
@@ -57,11 +61,23 @@ class Login extends Component {
             this.addUserToDatabase();
           });;
         })
-        .catch(function(error) {
+        .catch((error) => {
         // Handle Errors here.
         console.log(error.code + ": " + error.message)
         });
 
+    }
+
+    login(event){
+        event.preventDefault();
+
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+        .then(() => {
+
+        }).catch((error) => {
+        // Handle Errors here.
+        this.setState({errors:error.code});
+        });
     }
 
     switch(){
@@ -72,13 +88,11 @@ class Login extends Component {
         let user = firebase.auth().currentUser;
 
         this.setState({user:firebase.auth().currentUser})
-        firebase.database().ref('users/').child(user.uid).push({
+        firebase.database().ref('users/').child(user.uid).update({
           name: this.state.name,
           email: this.state.email,
           joined: Date.now(),
-          language:"",
           location:this.state.location,
-          floor:this.state.floor,
           total:0,
           balance:0,
           referralCount:0,
@@ -88,12 +102,16 @@ class Login extends Component {
 
         })
         .then(() => {
-            this.setState({inprogress:false})
+            firebase.database().ref('leaderboard').child('byUser').update({
+                [user.uid]:0
+            }).then(() => {
+                this.setState({inprogress:false})
+            })
         })
-        .catch(function(error) {
-        // Handle Errors here.
-        console.log(error.code + ": " + error.message);
-        this.setState({errors:error.message});
+        .catch((error) => {
+            // Handle Errors here.
+            console.log(error.code + ": " + error.message);
+            this.setState({errors:error.message});
         });
 
       }
@@ -124,6 +142,8 @@ class Login extends Component {
                         <Row>
                             <Col className = "text-center">
                                 <h1> Login </h1>
+                                <h1> {this.state.newUser ? "Sign Up!" : "Log In"} </h1>
+
                             </Col>
                         </Row>
 
@@ -171,17 +191,23 @@ class Login extends Component {
                                     <FormGroup row>
                                         <Col className = "col-centered" sm={6}>
                                             <Label for="Borough Name">Building Name</Label>
-                                            <Input type="select" name="Borough Name" id="Borough Name" defaultValue = "Borough Name">
-                                                <option>Brooklyn</option>
-                                                <option>Bronx</option>
-                                                <option>Manhatten</option>
-                                                <option>Staten Island</option>
+                                            <Input type="select" name="location" id="Borough Name"  value={this.state.location} onChange={this.handleChange}>
+                                                <option value = "">Select</option>
+                                                <option value = "brooklyn">Brooklyn</option>
+                                                <option value = "bronx">Bronx</option>
+                                                <option value = "manhattan">Manhatten</option>
+                                                <option value = "statenisland">Staten Island</option>
                                             </Input>
                                         </Col>
                                     </FormGroup>
                                     <FormGroup row>
+                                        <Col className = "col-centered"sm={6}>
+                                            <Input name="language" type="text" placeholder="Preferred Language" value={this.state.language} onChange={this.handleChange} />
+                                        </Col>
+                                    </FormGroup>
+                                    <FormGroup row>
                                         <Col className = "text-center" >
-                                            <Button onClick={this.handleSubmit}>Create Account</Button>
+                                            <Button onClick={this.signup}>Create Account</Button>
                                         </Col>
                                     </FormGroup>
                                 </Collapse>
@@ -190,26 +216,29 @@ class Login extends Component {
 
                                     <FormGroup row>
                                         <Col className = "text-center">
-                                            <Button onClick={this.switch}>Login</Button>
+                                            <Button onClick={this.login}>Login</Button>
                                         </Col>
                                     </FormGroup>
                                 }
                                 {!this.state.newUser &&
                                     <FormGroup row>
                                         <Col className = "text-center">
-                                            <Button onClick={this.switch}>New User?</Button>
+                                            <Button onClick={this.switch}>New User</Button>
                                         </Col>
                                     </FormGroup>
                                 }
-
+                                {this.state.newUser &&
+                                    <FormGroup row>
+                                        <Col className = "text-center">
+                                            <Button onClick={this.switch}>Back to User Login</Button>
+                                        </Col>
+                                    </FormGroup>
+                                }
 
                             </Container>
                         </Form>
 
                     </Container>
-
-
-
             </div>
         );
     }
