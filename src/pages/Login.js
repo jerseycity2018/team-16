@@ -25,7 +25,10 @@ class Login extends Component {
         referrer: null,
         language: '',
         newUser: false,
-        errors:{}
+        errors:{
+            code:"",
+            message:""
+        }
       };
 
       this.handleChange = this.handleChange.bind(this);
@@ -35,7 +38,6 @@ class Login extends Component {
     }
 
     handleChange(event) {
-        console.log(event.target.value)
       this.setState({
         [event.target.name]: event.target.value
       });
@@ -64,6 +66,13 @@ class Login extends Component {
         .catch((error) => {
         // Handle Errors here.
         console.log(error.code + ": " + error.message)
+        this.setState((previousState) => {
+            //console.log(previousState.collapse[section]);
+            previousState.errors["code"] = error.code;
+            previousState.errors["message"] = error.message;
+            
+            return previousState;
+        });
         });
 
     }
@@ -179,6 +188,7 @@ class Login extends Component {
 
                                     <Col className = "col-centered" sm={6} >
                                         <Input name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
+                                        {this.state.errors && this.state.errors.code == "auth/weak-password" && <p> {this.state.errors.code} : {this.state.errors.message}</p>}
                                     </Col>
                                 </FormGroup>
                                 <Collapse isOpen = {this.state.newUser}>
