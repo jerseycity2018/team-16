@@ -107,7 +107,6 @@ class Login extends Component {
       return (
 
         <div className="Sign">
-                <h1>  Make NYCHAS Greener </h1>
 
                 { firebase.auth().currentUser && !this.state.inprogress &&
                     (<Redirect push to={{
@@ -120,50 +119,68 @@ class Login extends Component {
                 {this.state.newUser ? 
                 (
                     <Container>
-                        <h1>Sign Up </h1>
+                        <Row>
+                            <Col className = "col-centered">
+                                <h1>  Make NYCHAS Greener </h1>   
+                                <h1>Sign Up </h1>
+                            </Col>
+                        </Row>
                         
                         <Form>
                             <Container>
                             {/* Get first and last name from user */}
                                 <FormGroup row>
-                                <Col sm={6}>
-                                    <Input  name="name"  placeholder = "Name" value={this.state.name} onChange={this.handleChange}/>
-                                </Col>
+                                    <Col className = "col-centered" sm={6}>
+                                        <Input  name="name"  placeholder = "Name" value={this.state.name} onChange={this.handleChange}/>
+                                    </Col>
                                 </FormGroup>
                             {/* Get email from user */}
                                 <FormGroup row>
-                                <Col sm={4} >
-                                    <Input name="email" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
-                                </Col>
-                                <Col sm={4}>
-                                    <Input name="confirmEmail" type="text" placeholder="Confirm Email" value={this.state.confirmEmail} onChange={this.handleChange} />
-                                </Col>
+                                    <Col  className = "col-centered" sm={6} >
+                                        <Input name="email" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup row>
+                                    <Col  className = "col-centered" sm={6} >
+                                        <Input name="confirmEmail" type="text" placeholder="Confirm Email" value={this.state.confirmEmail} onChange={this.handleChange} />
+                                    </Col>
                                 </FormGroup>
                                 
                             {/* Get password from user */}
                                 <FormGroup row>
-                                <Col sm={4} >
-                                    <Input name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
-                                </Col>
-                                <Col sm={4}>
-                                    <Input name="confirmPassword" type="password" placeholder="Confirm Password" value={this.state.confirmPassword} onChange={this.handleChange} />
-                                </Col>
+                                    <Col className = "col-centered" sm={6} >
+                                        <Input name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup row>
+                                    <Col className = "col-centered"sm={6}>
+                                        <Input name="confirmPassword" type="password" placeholder="Confirm Password" value={this.state.confirmPassword} onChange={this.handleChange} />
+                                    </Col>
                                 </FormGroup>
                             
-                            <FormGroup row>
-                                <Col sm={4}>
-                                    <Label for="Borough Name">Building Name</Label>
-                                    <Input type="select" name="Borough Name" id="Borough Name" defaultValue = "Borough Name">
-                                        <option>Brooklyn</option>
-                                        <option>Bronx</option>
-                                        <option>Manhatten</option>
-                                        <option>Staten Island</option>
-                                    </Input>
-                                </Col>
-                            </FormGroup>
+                                <FormGroup row>
+                                    <Col className = "col-centered" sm={6}>
+                                        <Label for="Borough Name">Building Name</Label>
+                                        <Input type="select" name="Borough Name" id="Borough Name" defaultValue = "Borough Name">
+                                            <option>Brooklyn</option>
+                                            <option>Bronx</option>
+                                            <option>Manhatten</option>
+                                            <option>Staten Island</option>
+                                        </Input>
+                                    </Col>
+                                </FormGroup>
 
-                            <Button onClick={this.handleSubmit}>Create Account</Button>
-                            <Button onClick={this.switch}>Returning User? Sign In</Button>
+                                <FormGroup row>
+                                    <Col className = "col-centered" sm={3}>
+                                        <Button onClick={this.handleSubmit}>Create Account</Button>
+                                    </Col>
+                                </FormGroup>
+
+                                <FormGroup row>
+                                    <Col className = "col-centered" sm={2}>
+                                        <Button onClick={this.switch}>Login</Button>
+                                    </Col>
+                                </FormGroup>
                             
                             </Container>
                         </Form>
