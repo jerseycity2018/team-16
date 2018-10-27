@@ -92,7 +92,9 @@ class Profile extends Component {
                     </Row>
                 
                     <Row>
-                        <Button onClick = {this.logout}> Log Out </Button>
+                        <Col className = "text-center">
+                            <Button onClick = {this.logout}> Log Out </Button>
+                        </Col>
                     </Row>
                 </Container>
             }
