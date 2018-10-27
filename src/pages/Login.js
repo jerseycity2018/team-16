@@ -120,9 +120,14 @@ class Login extends Component {
                 (
                     <Container>
                         <Row>
-                            <Col className = "col-centered">
+                            <Col className = "text-center">
                                 <h1>  Make NYCHAS Greener </h1>   
-                                <h1>Sign Up </h1>
+                            </Col>
+                        </Row>
+
+                        <Row>
+                            <Col className = "text-center">
+                                <h1> Login </h1>   
                             </Col>
                         </Row>
                         
@@ -171,16 +176,17 @@ class Login extends Component {
                                 </FormGroup>
 
                                 <FormGroup row>
-                                    <Col className = "col-centered" sm={3}>
+                                    <Col className = "text-center" >
                                         <Button onClick={this.handleSubmit}>Create Account</Button>
                                     </Col>
                                 </FormGroup>
 
                                 <FormGroup row>
-                                    <Col className = "col-centered" sm={2}>
-                                        <Button onClick={this.switch}>Login</Button>
+                                    <Col className = "text-center">
+                                        <Button onClick={this.handleSubmit}>Login</Button>
                                     </Col>
                                 </FormGroup>
+
                             
                             </Container>
                         </Form>
