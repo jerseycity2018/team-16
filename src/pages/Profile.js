@@ -34,7 +34,7 @@ class Profile extends Component {
       collapsed: !this.state.collapsed
     });
   }
-
+    
   componentDidMount(){
     const currentUser = firebase.auth().currentUser
     firebase.auth().onAuthStateChanged(user => {
@@ -46,7 +46,7 @@ class Profile extends Component {
       userdata.on('value', (snapshot) => {
           this.setState({info: snapshot.val()})
       })
-
+    
     }
 
   }
@@ -55,8 +55,6 @@ class Profile extends Component {
       return (
         
         <div className = "App" id="profile">
-
-        
 
             <Container>
             <div class = "background-white"></div>
@@ -71,8 +69,8 @@ class Profile extends Component {
                     }} /> )
             }
 
-            <Menu />
-            <Container>
+            <Menu/>
+            </Container>
 
             {this.state.info &&
                 <Container>
@@ -117,9 +115,9 @@ class Profile extends Component {
             
         
         </Container>
-
-            </Container>
         </div>
+
+      
 
       );
     }

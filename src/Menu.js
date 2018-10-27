@@ -37,9 +37,9 @@ class Menu extends Component {
                 <Col className = "text-center">
                     <Navbar color="green" light>
                         <NavbarToggler  onClick={this.toggleNavbar} className="mr-2" />
-                        <NavbarBrand className = "text-center" href="/" className="mr-auto">Greener City Force </NavbarBrand>
+                        <NavbarBrand href="/" className="mr-auto">Greener City Force </NavbarBrand>
                         <Collapse isOpen={!this.state.collapsed} navbar>
-                            <Nav navbar>
+                            <Nav navBar>
                                 <NavItem>
                                     <NavLink tag = {Link}  to="/profile">Profile</NavLink>
                                 </NavItem>
