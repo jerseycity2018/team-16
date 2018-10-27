@@ -38,8 +38,8 @@ class Login extends Component {
         [event.target.name]: event.target.value
       });
     }
+    signup(event) {
 
-    handleSubmit(event) {
       event.preventDefault();
 
       //TODO: FORM VALIDATION
@@ -89,7 +89,11 @@ class Login extends Component {
 
         })
         .then(() => {
-            this.setState({inprogress:false})
+            firebase.database().ref('leaderboard').child('byUser').update({
+                [user.uid]:0
+            }).then(() => {
+                this.setState({inprogress:false})
+            })
         })
         .catch(function(error) {
         // Handle Errors here.
@@ -121,7 +125,10 @@ class Login extends Component {
 
                         <Row>
                             <Col className = "text-center">
+
                                 <h1> Login </h1>
+
+                                <h1> {this.state.newUser ? "Sign Up!" : "Log In"} </h1>
                             </Col>
                         </Row>
 
@@ -176,7 +183,7 @@ class Login extends Component {
                                     </FormGroup>
                                     <FormGroup row>
                                         <Col className = "text-center" >
-                                            <Button onClick={this.handleSubmit}>Create Account</Button>
+                                            <Button onClick={this.signup}>Create Account</Button>
                                         </Col>
                                     </FormGroup>
                                 </Collapse>
@@ -192,7 +199,7 @@ class Login extends Component {
                                 {!this.state.newUser &&
                                     <FormGroup row>
                                         <Col className = "text-center">
-                                            <Button onClick={this.switch}>New User?</Button>
+                                            <Button onClick={this.switch}>New User</Button>
                                         </Col>
                                     </FormGroup>
                                 }
