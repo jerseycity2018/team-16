@@ -14,6 +14,8 @@ const loadApp = function(){
                 <Switch>
                     <Route exact path="/" component={App}/>
                     <Route path="/login" component={Login}/>
+                    <Route path="/profile" component={Profile}/>
+                    <Route path="/admin" component={Admin}/>
                 </Switch>
             </BrowserRouter>
       ), document.getElementById('root'))
