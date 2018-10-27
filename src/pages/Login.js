@@ -19,13 +19,13 @@ class Login extends Component {
 
 
     }
-  
+
     handleChange(event) {
       this.setState({
-        [event.target.name]: event.target.value 
+        [event.target.name]: event.target.value
       });
     }
-  
+
     handleSubmit(event) {
       event.preventDefault();
 
@@ -33,7 +33,7 @@ class Login extends Component {
 
     addUserToDatabase(){
         let user = firebase.auth().currentUser;
-        
+
         this.setState({user:firebase.auth().currentUser})
         firebase.database().ref('users/' + user.uid).push({
           name: "",
@@ -58,14 +58,14 @@ class Login extends Component {
 
         })
         .then(() => {
-  
+
         })
         .catch(function(error) {
         // Handle Errors here.
         console.log(error.code + ": " + error.message);
         this.setState({errors:error.message});
         });
-  
+
       }
 
 
@@ -75,7 +75,7 @@ class Login extends Component {
             <Container>
                 <h1>  Make NYCHAS Greener </h1>
 
-                {this.state.newUser ? 
+                {this.state.newUser ?
                 (
                     <h1>Sign Up </h1>
 
@@ -88,12 +88,12 @@ class Login extends Component {
 
                 )}
             </Container>
-         
+
         </div>
       );
     }
   }
 
-  
+
 
   export default Login;
