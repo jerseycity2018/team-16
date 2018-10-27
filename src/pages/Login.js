@@ -13,7 +13,7 @@ class Login extends Component {
         confirmEmail: '',
         password: '',
         confirmPassword: '',
-        user: firebase.auth().currentUser,
+        newUser: false,
         errors:{}
       };
 
@@ -72,7 +72,22 @@ class Login extends Component {
     render() {
       return (
         <div className="Sign">
-         <h1> BIG BRAIN GREEN CITY</h1>
+            <Container>
+                <h1>  Make NYCHAS Greener </h1>
+
+                {this.state.newUser ? 
+                (
+                    <h1>Sign Up </h1>
+
+
+                )
+                :
+                (
+
+                    <h1> Log In </h1>
+
+                )}
+            </Container>
          
         </div>
       );
