@@ -70,27 +70,21 @@ export default class Leaderboard extends Component {
     }
 
     let leaderInfo = [];
-    const usersRef = firebase.database().ref('leaderboard').child('byUser').orderByValue().limitToLast(3);
-    usersRef.on('value', (snapshot) => {
-
-        let data = snapshot.val();
+    const leaderRef = firebase.database().ref('leaderboard/byUser').orderByValue().limitToFirst(5);
+    leaderRef.on('value', (snapshot) => {
 
         snapshot.forEach( (leader) => {
-          firebase.database().ref('users').child(leader.key).once('value',  (snapshot) => {
+          firebase.database().ref('users').child(leader.key).on('value',  (snapshot) => {
             let data = snapshot.val();
             leaderInfo.push({
               name: data.name,
               points:data.total,
               location:data.location
             })
+            this.setState({leaderData: this.state.leaderData.concat([data])})
           });
         })
 
-        leaderInfo.sort((a, b) => a.points - b.points)
-        console.log(leaderInfo)
-        this.setState({
-            leaderData: leaderInfo
-        });
     })
 
   }
@@ -128,7 +122,7 @@ export default class Leaderboard extends Component {
                       <th scope="row">{i+1}</th>
                       <td> {user.name} </td>
                       <td> {user.location} </td>
-                      <th> {user.points} </th>
+                      <th> {user.total} </th>
                     </tr>
                     );
                     })}
