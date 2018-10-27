@@ -98,13 +98,13 @@ class Login extends Component {
     render() {
       return (
 
-        <div className="Sign">
+        <div className="Sign In">
                 <h1>  Make NYCHAS Greener </h1>
 
                 {this.state.newUser ? 
                 (
                     <Container>
-                        <h1>Sign Up </h1>
+                        <h1 align="center">Sign Up </h1>
                         
                         <Form>
                             <Container>
@@ -123,7 +123,7 @@ class Login extends Component {
                                     <Input name="email" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
                                 </Col>
                                 <Col sm={4}>
-                                    <Input name="email" type="text" placeholder="Confirm Email" value={this.state.email} onChange={this.handleChange} />
+                                    <Input name="email" type="text" placeholder="Confirm Email" value={this.state.confirmemail} onChange={this.handleChange} />
                                 </Col>
                                 </FormGroup>
                                 
@@ -133,14 +133,22 @@ class Login extends Component {
                                     <Input name="password" type="text" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
                                 </Col>
                                 <Col sm={4}>
-                                    <Input name="password" type="text" placeholder="Confirm Password" value={this.state.password} onChange={this.handleChange} />
+                                    <Input name="password" type="text" placeholder="Confirm Password" value={this.state.confirmpassword} onChange={this.handleChange} />
                                 </Col>
                                 </FormGroup>
                             
-                            <FormGroup row center>
-                            <Col sm={{ size: 4, offset: 4}}>
-                            <Label for="Borough Name">Building Name</Label>
+                            {/* Get phone number from user */}
+                                <FormGroup row>
+                        -        <Col sm={{ size: 4, offset: 2 }} >
+                                    <Input name="Phone Number" type="text" placeholder="Phone Number" value={this.state.phonenumber} onChange={this.handleChange} />
+                                </Col>
+                                
+                                    
+                            {/* Allow user to select which borough they live in */}
+                            
+                            <Col sm={4}>
                             <Input type="select" name="Borough Name" id="Borough Name" defaultValue = "Borough Name">
+                            <option value = "" selected disabled hidden> Choose here </option>
                             <option>Brooklyn</option>
                             <option>Bronx</option>
                             <option>Manhatten</option>
