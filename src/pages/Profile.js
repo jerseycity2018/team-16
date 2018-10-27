@@ -7,7 +7,6 @@ import { Button, Col, Row, Container, Collapse,
   UncontrolledDropdown, DropdownToggle, DropdownMenu,DropdownItem, Table
 } from 'reactstrap';
 
-
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -52,14 +51,14 @@ class Profile extends Component {
   render() {
       return (
         <div className = "App" id="profile">
-<<<<<<< HEAD
+
             <Container>
                 <h1> My Profile</h1>
                 <Row>
                     <p> push test</p>
                 </Row>
  
-=======
+            
             { !firebase.auth().currentUser &&
                 (<Redirect push to={{
                     pathname: '/login',
@@ -67,7 +66,7 @@ class Profile extends Component {
                     state: { referrer: 'signup' }
                 }} /> )
             }
-            {this.state.info && 
+            {this.state.info &&
                 <Container>
                     <h1> {this.state.info.email} </h1>
                     <Row>
@@ -76,10 +75,10 @@ class Profile extends Component {
                     </Row>
                 </Container>
             }
-    
+            
+            </Container>
         </div>
 
->>>>>>> 9eb3fc49585fcf7b917fbc24f449ac6265ba4e33
       );
     }
 }

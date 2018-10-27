@@ -126,16 +126,16 @@ class Login extends Component {
                             <Container>
                             {/* Get first and last name from user */}
                                 <FormGroup row>
-<<<<<<< HEAD
+
                                 <Col sm={{ size: 4, offset: 2 }}>
                                     <Input type="first name" name="first name" id="first name" placeholder = "First Name" value={this.state.firstname} onChange={this.handleChange}/>
                                 </Col>
                                 <Col sm={4}>
                                     <Input name="last name" type="last name" placeholder="Last Name" value={this.state.lastname} onChange={this.handleChange} />
-=======
+                                </Col>
                                 <Col sm={6}>
                                     <Input  name="name"  placeholder = "Name" value={this.state.name} onChange={this.handleChange}/>
->>>>>>> 9eb3fc49585fcf7b917fbc24f449ac6265ba4e33
+
                                 </Col>
                                 </FormGroup>
                             {/* Get email from user */}
@@ -144,17 +144,17 @@ class Login extends Component {
                                     <Input name="email" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
                                 </Col>
                                 <Col sm={4}>
-<<<<<<< HEAD
+
                                     <Input name="email" type="text" placeholder="Confirm Email" value={this.state.confirmemail} onChange={this.handleChange} />
-=======
+
                                     <Input name="confirmEmail" type="text" placeholder="Confirm Email" value={this.state.confirmEmail} onChange={this.handleChange} />
->>>>>>> 9eb3fc49585fcf7b917fbc24f449ac6265ba4e33
+
                                 </Col>
                                 </FormGroup>
                                 
                             {/* Get password from user */}
                                 <FormGroup row>
-<<<<<<< HEAD
+
                                 <Col sm={{ size: 4, offset: 2 }} >
                                     <Input name="password" type="text" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
                                 </Col>
@@ -181,7 +181,7 @@ class Login extends Component {
                             <option>Staten Island</option>
                             </Input>
                             </Col>
-=======
+
                                 <Col sm={4} >
                                     <Input name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
                                 </Col>
@@ -200,7 +200,6 @@ class Login extends Component {
                                         <option>Staten Island</option>
                                     </Input>
                                 </Col>
->>>>>>> 9eb3fc49585fcf7b917fbc24f449ac6265ba4e33
                             </FormGroup>
 
                             <Button onClick={this.handleSubmit}>Create Account</Button>
