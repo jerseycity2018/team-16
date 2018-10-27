@@ -127,7 +127,7 @@ class Login extends Component {
                             {/* Get first and last name from user */}
                                 <FormGroup row>
                                 <Col sm={6}>
-                                    <Input type="first name" name="first name" id="first name" placeholder = "First Name" value={this.state.name} onChange={this.handleChange}/>
+                                    <Input  name="name"  placeholder = "Name" value={this.state.name} onChange={this.handleChange}/>
                                 </Col>
                                 </FormGroup>
                             {/* Get email from user */}
@@ -136,7 +136,7 @@ class Login extends Component {
                                     <Input name="email" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
                                 </Col>
                                 <Col sm={4}>
-                                    <Input name="email" type="text" placeholder="Confirm Email" value={this.state.confirmEmail} onChange={this.handleChange} />
+                                    <Input name="confirmEmail" type="text" placeholder="Confirm Email" value={this.state.confirmEmail} onChange={this.handleChange} />
                                 </Col>
                                 </FormGroup>
                                 
@@ -146,7 +146,7 @@ class Login extends Component {
                                     <Input name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
                                 </Col>
                                 <Col sm={4}>
-                                    <Input name="password" type="password" placeholder="Confirm Password" value={this.state.confirmPassword} onChange={this.handleChange} />
+                                    <Input name="confirmPassword" type="password" placeholder="Confirm Password" value={this.state.confirmPassword} onChange={this.handleChange} />
                                 </Col>
                                 </FormGroup>
                             
