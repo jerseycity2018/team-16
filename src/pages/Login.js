@@ -89,7 +89,7 @@ class Login extends Component {
                 (
                     <Container>
                         <h1>Sign Up </h1>
-                        <Button onClick={this.switch}><span>Sign Up</span></Button>
+                        <Button onClick={this.switch}>Sign Up</Button>
                     </Container>
                 )
                 :
