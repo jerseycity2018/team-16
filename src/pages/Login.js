@@ -86,16 +86,11 @@ class Login extends Component {
           },
           referrals:{
             count:0,
-<<<<<<< HEAD
-            referrer:null
-          },
-          role:"user"
-=======
             referrer:this.state.referrer
           },
-          language:this.state.language
+          language:this.state.language,
+          role:"user"
 
->>>>>>> 5722db7d98839b1820b61ea6176e1d4ac7e412e0
         })
         .then(() => {
             this.setState({inprogress:false})

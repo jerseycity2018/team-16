@@ -45,11 +45,6 @@ class Profile extends Component {
 
       })
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 86245bce9f75b616330f4bcdd6a6250aa065e9f6
     }
 
   }
