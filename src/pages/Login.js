@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import '../App.css'
 import firebase, { auth, provider } from '../firebase.js'
 
-import { Container , Row, Col, Button, 
+import { Container , Row, Col, Button, Collapse,
     Form, FormGroup, Input, Check, Label
   } from 'reactstrap';
 
@@ -22,7 +22,7 @@ class Login extends Component {
         floor: 0,
         referrer: null,
         language: '',
-        newUser: true,
+        newUser: false,
         errors:{}
       };
 
@@ -76,18 +76,12 @@ class Login extends Component {
           email: this.state.email,
           joined: Date.now(),
           language:"",
-          nycha:{
-              location:this.state.location,
-              floor:this.state.floor
-          },
-          points:{
-            lifetime:0,
-            balance:0,
-          },
-          referrals:{
-            count:0,
-            referrer:this.state.referrer
-          },
+          location:this.state.location,
+          floor:this.state.floor,
+          total:0,
+          balance:0,
+          referralCount:0,
+          referrer:this.state.referrer,
           language:this.state.language,
           role:"user"
 
@@ -106,8 +100,9 @@ class Login extends Component {
     render() {
       return (
 
-        <div className="Sign In">
-                <h1>  Make NYCHAS Greener </h1>
+
+        <div className="Sign">
+
 
                 { firebase.auth().currentUser && !this.state.inprogress &&
                     (<Redirect push to={{
@@ -117,108 +112,101 @@ class Login extends Component {
                     }} /> )
                  }
 
-                {this.state.newUser ? 
-                (
                     <Container>
-                        <h1 align="center">Sign Up </h1>
+
+                        <Row>
+                            <Col className = "text-center">
+                                <h1>  Make NYCHAS Greener </h1>   
+                            </Col>
+                        </Row>
+
+                        <Row>
+                            <Col className = "text-center">
+                                <h1> Login </h1>   
+                            </Col>
+                        </Row>
                         
                         <Form>
                             <Container>
                             {/* Get first and last name from user */}
+
+                            <Collapse isOpen = {this.state.newUser}> 
                                 <FormGroup row>
 
-                                <Col sm={{ size: 4, offset: 2 }}>
-                                    <Input type="first name" name="first name" id="first name" placeholder = "First Name" value={this.state.firstname} onChange={this.handleChange}/>
-                                </Col>
-                                <Col sm={4}>
-                                    <Input name="last name" type="last name" placeholder="Last Name" value={this.state.lastname} onChange={this.handleChange} />
-                                </Col>
-                                <Col sm={6}>
-                                    <Input  name="name"  placeholder = "Name" value={this.state.name} onChange={this.handleChange}/>
-
-                                </Col>
+                                    <Col className = "col-centered" sm={6}>
+                                        <Input  name="name"  placeholder = "Name" value={this.state.name} onChange={this.handleChange}/>
+                                    </Col>
                                 </FormGroup>
+                            </Collapse>
                             {/* Get email from user */}
                                 <FormGroup row>
-                                <Col sm={{ size: 4, offset: 2 }} >
-                                    <Input name="email" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
-                                </Col>
-                                <Col sm={4}>
 
-                                    <Input name="email" type="text" placeholder="Confirm Email" value={this.state.confirmemail} onChange={this.handleChange} />
-
-                                    <Input name="confirmEmail" type="text" placeholder="Confirm Email" value={this.state.confirmEmail} onChange={this.handleChange} />
-
-                                </Col>
+                                    <Col  className = "col-centered" sm={6} >
+                                        <Input name="email" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
+                                    </Col>
                                 </FormGroup>
+
+                                <Collapse isOpen = {this.state.newUser}>
+                                    <FormGroup row>
+                                        <Col  className = "col-centered" sm={6} >
+                                            <Input name="confirmEmail" type="text" placeholder="Confirm Email" value={this.state.confirmEmail} onChange={this.handleChange} />
+                                        </Col>
+                                    </FormGroup>
+                                </Collapse>
                                 
                             {/* Get password from user */}
                                 <FormGroup row>
 
-                                <Col sm={{ size: 4, offset: 2 }} >
-                                    <Input name="password" type="text" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
-                                </Col>
-                                <Col sm={4}>
-                                    <Input name="password" type="text" placeholder="Confirm Password" value={this.state.confirmpassword} onChange={this.handleChange} />
-                                </Col>
+                                    <Col className = "col-centered" sm={6} >
+                                        <Input name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
+                                    </Col>
                                 </FormGroup>
-                            
-                            {/* Get phone number from user */}
-                                <FormGroup row>
-                        -        <Col sm={{ size: 4, offset: 2 }} >
-                                    <Input name="Phone Number" type="text" placeholder="Phone Number" value={this.state.phonenumber} onChange={this.handleChange} />
-                                </Col>
-                                
-                                    
-                            {/* Allow user to select which borough they live in */}
-                            
-                            <Col sm={4}>
-                            <Input type="select" name="Borough Name" id="Borough Name" defaultValue = "Borough Name">
-                            <option value = "" selected disabled hidden> Choose here </option>
-                            <option>Brooklyn</option>
-                            <option>Bronx</option>
-                            <option>Manhatten</option>
-                            <option>Staten Island</option>
-                            </Input>
-                            </Col>
+                                <Collapse isOpen = {this.state.newUser}>
+                                    <FormGroup row>
+                                        <Col className = "col-centered"sm={6}>
+                                            <Input name="confirmPassword" type="password" placeholder="Confirm Password" value={this.state.confirmPassword} onChange={this.handleChange} />
+                                        </Col>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                        <Col className = "col-centered" sm={6}>
+                                            <Label for="Borough Name">Building Name</Label>
+                                            <Input type="select" name="Borough Name" id="Borough Name" defaultValue = "Borough Name">
+                                                <option>Brooklyn</option>
+                                                <option>Bronx</option>
+                                                <option>Manhatten</option>
+                                                <option>Staten Island</option>
+                                            </Input>
+                                        </Col>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                        <Col className = "text-center" >
+                                            <Button onClick={this.handleSubmit}>Create Account</Button>
+                                        </Col>
+                                    </FormGroup>
+                                </Collapse>
 
-                                <Col sm={4} >
-                                    <Input name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
-                                </Col>
-                                <Col sm={4}>
-                                    <Input name="confirmPassword" type="password" placeholder="Confirm Password" value={this.state.confirmPassword} onChange={this.handleChange} />
-                                </Col>
-                                </FormGroup>
-                            
-                            <FormGroup row>
-                                <Col sm={4}>
-                                    <Label for="Borough Name">Building Name</Label>
-                                    <Input type="select" name="Borough Name" id="Borough Name" defaultValue = "Borough Name">
-                                        <option>Brooklyn</option>
-                                        <option>Bronx</option>
-                                        <option>Manhatten</option>
-                                        <option>Staten Island</option>
-                                    </Input>
-                                </Col>
-                            </FormGroup>
+                                {!this.state.newUser &&
 
-                            <Button onClick={this.handleSubmit}>Create Account</Button>
-                            <Button onClick={this.switch}>Returning User? Sign In</Button>
+                                    <FormGroup row>
+                                        <Col className = "text-center">
+                                            <Button onClick={this.switch}>Login</Button>
+                                        </Col>
+                                    </FormGroup>
+                                }
+                                {!this.state.newUser &&
+                                    <FormGroup row>
+                                        <Col className = "text-center">
+                                            <Button onClick={this.switch}>New User?</Button>
+                                        </Col>
+                                    </FormGroup>
+                                }
+
                             
                             </Container>
                         </Form>
                         
                     </Container>
- 
-      
-                )
-                :
-                (
-                    <Container>
-                        <h1> Log In </h1>
-                        <Button onClick={this.switch}>New User? Sign Up</Button>
-                    </Container>
-                )}
+
     
 
                 

@@ -7,6 +7,8 @@ import { Button, Col, Row, Container, Collapse,
   UncontrolledDropdown, DropdownToggle, DropdownMenu,DropdownItem, Table
 } from 'reactstrap';
 
+import Rewardmarket from "./Rewardmarket.js"
+
 class Profile extends Component {
   constructor(props) {
     super(props);

@@ -10,13 +10,28 @@ render () {
     return (
     <Container>
         <div>
-        <Button color="primary">primary</Button>{' '}
-        <Button color="secondary">secondary</Button>{' '}
-        <Button color="success">success</Button>{' '}
-        <Button color="info">info</Button>{' '}
-        <Button color="warning">warning</Button>{' '}
-        <Button color="danger">danger</Button>{' '}
-        <Button color="link">link</Button>
+        <Table>
+        <thead>
+          <tr>
+            <th>Reward</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><Button color = "primary">Farm Made Lip Balm</Button></td>
+            <td>-10 Points</td>
+          </tr>
+          <tr>
+            <td><Button color = "primary">Farm Made Lotion</Button></td>
+            <td>-10 Points</td>
+          </tr>
+          <tr>
+            <td><Button color = "primary">$10 Gift Card</Button></td>
+            <td>-25 Points</td>
+          </tr>
+        </tbody>
+      </Table>
       </div>
     </Container>
     );
