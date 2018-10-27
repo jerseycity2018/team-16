@@ -8,8 +8,6 @@ import { Container , Row, Col, Button, Collapse,
     Form, FormGroup, Input, Check, Label
   } from 'reactstrap';
 
-import Testprofile from "./Testprofile.js"
-
 
 class Login extends Component {
     constructor(props) {

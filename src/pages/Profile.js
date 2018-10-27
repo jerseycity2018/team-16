@@ -59,10 +59,6 @@ class Profile extends Component {
             <Container>
             <div class = "background-white"></div>
                 <h1> My Profile</h1>
-                <Row>
-                    <p> push test</p>
-                </Row>
-        
             
             { !firebase.auth().currentUser &&
                 (<Redirect push to={{
@@ -84,9 +80,6 @@ class Profile extends Component {
             <Container>
         <div class="body"></div>
         <Row>
-        <Col className = "text-left">
-        <h1> My Profile </h1>
-        </Col>
         <div class = "circle"></div>
         {
         <div class="content">
