@@ -19,11 +19,15 @@ class Login extends Component {
         confirmEmail: '',
         password: '',
         confirmPassword: '',
+<<<<<<< HEAD
         location: '',
         floor: 0,
         referrer: null,
         language: '',
         newUser: false,
+=======
+        newUser: true,
+>>>>>>> 4d71e8f2f54940d41a4c0b63cc53ee2b1b15b7fb
         errors:{}
       };
 
@@ -40,6 +44,27 @@ class Login extends Component {
     handleSubmit(event) {
       event.preventDefault();
 
+      //TODO: FORM VALIDATION
+      this.setState({
+        inprogress:true,
+      });
+      
+      auth.createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .then(() => {
+          firebase.auth().currentUser.updateProfile({
+            displayName: this.state.name
+          }).then(() => { 
+            this.setState({
+              user: firebase.auth().currentUser,
+            });
+            this.addUserToDatabase();
+          });;
+        })
+        .catch(function(error) {
+        // Handle Errors here.
+        console.log(error.code + ": " + error.message)
+        });
+
     }
 
     switch(){
@@ -54,6 +79,7 @@ class Login extends Component {
           name: this.state.name,
           email: this.state.email,
           joined: Date.now(),
+          language:"",
           NYCHA:{
               location:this.state.location,
               floor:this.state.floor
@@ -66,11 +92,11 @@ class Login extends Component {
             count:0,
             referrer:this.state.referrer
           },
-          language:this.state.language,
+          language:this.state.language
 
         })
         .then(() => {
-  
+            this.setState({inprogress:false})
         })
         .catch(function(error) {
         // Handle Errors here.
@@ -89,15 +115,27 @@ class Login extends Component {
                 {this.state.newUser ? 
                 (
                     <Container>
-                        <h1> Log In </h1>
+                        <h1>Sign Up </h1>
+                        <Button onClick={this.switch}>Sign Up</Button>
+                        <Form>
+                            <Container>
+                                <FormGroup row>
+                                <Col sm={4}>
+                                    <Input name="name" type="text" placeholder="name" value={this.state.name} onChange={this.handleChange} />
+                                </Col>
+                                <Col sm={4} >
+                                    <Input name="email" type="text" placeholder="email@domain.com" value={this.state.email} onChange={this.handleChange} />
+                                </Col>
+                                </FormGroup>
+                                
+                            </Container>
+                        </Form>
                     </Container>
-
                 )
                 :
                 (
                     <Container>
-                        <h1>Sign Up </h1>
-                        <Button onClick={this.switch}><span>Sign Up</span></Button>
+                        <h1> Log In </h1>
                     </Container>
                 )}
         </div>
