@@ -5,8 +5,7 @@ import '../App.css'
 import firebase, { auth, provider } from '../firebase.js'
 
 import { Container , Row, Col, Button, 
-    Form, FormGroup,FormText, 
-    Input, FormFeedback, Radio, ControlLabel, FormControl, Checkbox
+    Form, FormGroup, Input, Check, Label
   } from 'reactstrap';
 
 
@@ -105,31 +104,45 @@ class Login extends Component {
                 {this.state.newUser ? 
                 (
                     <Container>
-                    <form> 
-                    <FormGroup>
-                    <Checkbox inline>1</Checkbox> <Checkbox inline>2</Checkbox>{' '}
-                    <Checkbox inline>3</Checkbox>
-                    </FormGroup>
-                    </form>
                         <h1>Sign Up </h1>
-                        <Button onClick={this.switch}>Sign Up</Button>
+                        
                         <Form>
                             <Container>
+                            {/* Get first and last name from user */}
                                 <FormGroup row>
                                 <Col sm={4}>
-                                    <Input name="name" type="text" placeholder="name" value={this.state.name} onChange={this.handleChange} />
+                                    <Input type="first name" name="first name" id="first name" placeholder = "First Name" value={this.state.firstname} onChange={this.handleChange}/>
                                 </Col>
-                                <Col sm={4} >
-                                    <Input name="email" type="text" placeholder="email@domain.com" value={this.state.email} onChange={this.handleChange} />
+                                <Col sm={4}>
+                                    <Input name="last name" type="last name" placeholder="Last Name" value={this.state.lastname} onChange={this.handleChange} />
                                 </Col>
                                 </FormGroup>
-                                
+                            {/* Get email from user */}
+                                <FormGroup row>
+                                <Col sm={4} >
+                                    <Input name="email" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
+                                </Col>
+                                <Col sm={4}>
+                                    <Input name="email" type="text" placeholder="Confirm Email" value={this.state.email} onChange={this.handleChange} />
+                                </Col>
+                                </FormGroup>
+                            
+                            <FormGroup>
+                            <Label for="Borough Name">Building Name</Label>
+                            <Input type="select" name="Borough Name" id="Borough Name">
+                            <option>Brooklyn</option>
+                            <option>Bronx</option>
+                            <option>Manhatten</option>
+                            <option>Staten Island</option>
+                            </Input>
+                            </FormGroup>
+                            
                             </Container>
                         </Form>
+                        
+                        <Button onClick={this.switch}>Sign Up</Button>
                     </Container>
-                    
-              
-                    
+ 
       
                 )
                 :
