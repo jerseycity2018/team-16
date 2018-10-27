@@ -8,6 +8,9 @@ import { Container , Row, Col, Button, Collapse,
     Form, FormGroup, Input, Check, Label
   } from 'reactstrap';
 
+import Rewardmarket from "./Rewardmarket.js"
+import Testprofile from "./Testprofile.js"
+
 
 class Login extends Component {
     constructor(props) {
@@ -207,8 +210,9 @@ class Login extends Component {
                         
                     </Container>
 
-    
 
+
+            <Testprofile/>
                 
 
                 
