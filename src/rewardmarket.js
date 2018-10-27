@@ -2,36 +2,38 @@ import React, { Component } from 'react'
 import { Link, Redirect} from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Container , Row, Col, Button, 
-    Form, FormGroup, Input, Check, Label
+    Form, Table
   } from 'reactstrap';
 
 render () {
     return (
+    <Container>
         <Table>
         <thead>
           <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th></th>
+            <th>Reward</th>
+            <th>Points</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
+            <td>Locally Made Lip Balm</td>
+            <td>- 10</td>
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
+            <td>Lip Balm</td>
+            <td>-10</td>
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
+            <td>$ 10 Gift Card</td>
+            <td>- 30 points</td>
           </tr>
         </tbody>
       </Table>
+    </Container>
     );
     }

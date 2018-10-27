@@ -4,7 +4,7 @@ import firebase, { auth } from '../firebase.js';
 import { Redirect } from 'react-router-dom'
 import { Button, Col, Row, Container, Collapse,
   Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,
-  UncontrolledDropdown, DropdownToggle, DropdownMenu,DropdownItem,
+  UncontrolledDropdown, DropdownToggle, DropdownMenu,DropdownItem, Table
 } from 'reactstrap';
 
 
@@ -57,9 +57,7 @@ class Profile extends Component {
                 <Row>
                     <p> push test</p>
                 </Row>
-            </Container>
-        </div>
-
+ 
       );
     }
 }
