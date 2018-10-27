@@ -19,6 +19,10 @@ class Login extends Component {
         confirmEmail: '',
         password: '',
         confirmPassword: '',
+        location: '',
+        floor: 0,
+        referrer: null,
+        language: '',
         newUser: false,
         errors:{}
       };
@@ -47,15 +51,12 @@ class Login extends Component {
         
         this.setState({user:firebase.auth().currentUser})
         firebase.database().ref('users/' + user.uid).push({
-          name: "",
-          firstName: "",
-          lastName: "",
-          email: "",
-          provider: "",
+          name: this.state.name,
+          email: this.state.email,
           joined: Date.now(),
           NYCHA:{
-              location:"",
-              floor:0
+              location:this.state.location,
+              floor:this.state.floor
           },
           points:{
             lifetime:0,
@@ -63,9 +64,9 @@ class Login extends Component {
           },
           referrals:{
             count:0,
-            referrer:null
+            referrer:this.state.referrer
           },
-          language:"",
+          language:this.state.language,
 
         })
         .then(() => {
