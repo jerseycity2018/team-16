@@ -8,17 +8,12 @@ class Login extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        firstName: '',
-        lastName: '',
+        name: '',
         email: '',
         confirmEmail: '',
         password: '',
         confirmPassword: '',
         user: firebase.auth().currentUser,
-        beginCustomerCreation:false,
-        shopify:{
-          errors:null
-        },
         errors:{}
       };
 
@@ -36,6 +31,42 @@ class Login extends Component {
 
     }
 
+    addUserToDatabase(){
+        let user = firebase.auth().currentUser;
+        
+        this.setState({user:firebase.auth().currentUser})
+        firebase.database().ref('users/' + user.uid).push({
+          name: "",
+          firstName: "",
+          lastName: "",
+          email: "",
+          provider: "",
+          joined: Date.now(),
+          NYCHA:{
+              location:"",
+              floor:0
+          },
+          points:{
+            lifetime:0,
+            balance:0,
+          },
+          referrals:{
+            count:0,
+            referrer:null
+          },
+          language:"",
+
+        })
+        .then(() => {
+  
+        })
+        .catch(function(error) {
+        // Handle Errors here.
+        console.log(error.code + ": " + error.message);
+        this.setState({errors:error.message});
+        });
+  
+      }
 
 
     render() {
