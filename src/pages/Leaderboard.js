@@ -74,12 +74,12 @@ export default class Leaderboard extends Component {
     userRef.on('value', (snapshot) => {
     
       snapshot.forEach( (user) => {
-        firebase.database().ref("leaderboard").child("byUser").set({[user.key]:user.val().total})
+        firebase.database().ref("leaderboard").child("byUser").update({[user.key]:user.val().total})
       })
     });
 
     let leaderInfo = [];
-    const leaderRef = firebase.database().ref('leaderboard/byUser').orderByValue().limitToFirst(5);
+    const leaderRef = firebase.database().ref('leaderboard/byUser').orderByValue().limitToLast(5);
     leaderRef.on('value', (snapshot) => {
 
         snapshot.forEach( (leader) => {
@@ -103,6 +103,7 @@ export default class Leaderboard extends Component {
 
 
   render() {
+      
       console.log(this.state.leaderData)
       return (
         <div className = "App" id="profile">
@@ -110,7 +111,7 @@ export default class Leaderboard extends Component {
             <Container>
               <Row>
                   <Col className = "text-center">
-                      <h1>  Leaderboard </h1>
+                      <h1 onClick = {() => {window.location.href = "localhost:3000/leaderboard";}}>  Leaderboard </h1>
                   </Col>
               </Row>
             
@@ -125,7 +126,7 @@ export default class Leaderboard extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.leaderData.map((user,i) => {
+                  {this.state.leaderData.slice(0).reverse().map((user,i) => {
                     return(
                     <tr key = {i}>
                       <th scope="row">{i+1}</th>

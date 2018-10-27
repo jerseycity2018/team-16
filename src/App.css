@@ -9,7 +9,9 @@ body{
     background-color: #fefbd8;
 }
 
-
+.largeText{
+    font-size:200%;
+}
 .circle{
      width: 350px;
      height: 350px;
@@ -45,9 +47,18 @@ body{
         }
 
 .cal-container{
-    width:100%;
-    position: static;
-    margin:225px auto ;  
+    margin:0 auto ;  
     text-align:center;
+    height:30em;
 }
 
+@media (max-width: 768px) {
+    .cal-container{
+        height:300px;
+    }
+}
+
+.spendlink{
+    color: #152344;
+    font-size:150%;
+}

@@ -139,7 +139,6 @@ class Login extends Component {
                         state: { referrer: 'login' }
                     }} /> )
                  }
-
                     <Container>
 
                         <Row>
@@ -150,7 +149,6 @@ class Login extends Component {
 
                         <Row>
                             <Col className = "text-center">
-                                <h1> Login </h1>
                                 <h1> {this.state.newUser ? "Sign Up!" : "Log In"} </h1>
 
                             </Col>
@@ -200,7 +198,7 @@ class Login extends Component {
                                     </FormGroup>
                                     <FormGroup row>
                                         <Col className = "col-centered" sm={6}>
-                                            <Label for="Borough Name">Building Name</Label>
+                                            <Label for="Borough Name">Borough</Label>
                                             <Input type="select" name="location" id="Borough Name"  value={this.state.location} onChange={this.handleChange}>
                                                 <option value = "">Select</option>
                                                 <option value = "brooklyn">Brooklyn</option>
@@ -213,6 +211,12 @@ class Login extends Component {
                                     <FormGroup row>
                                         <Col className = "col-centered"sm={6}>
                                             <Input name="language" type="text" placeholder="Preferred Language" value={this.state.language} onChange={this.handleChange} />
+                                        </Col>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                        <Col className = "col-centered"sm={6}>
+                                            <Label for="referrer"> Did someone refer you to join?</Label>
+                                            <Input name="referrer" type="text" placeholder="Enter their email" value={this.state.referrer} onChange={this.handleChange} />
                                         </Col>
                                     </FormGroup>
                                     <FormGroup row>

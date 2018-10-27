@@ -26,6 +26,12 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+      }
+      </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -50,7 +56,8 @@
     crossorigin="anonymous"></script>
 
     <div id="fb-root"></div>
-    
+   
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   </body>
 </html>
