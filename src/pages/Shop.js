@@ -25,15 +25,15 @@ render () {
             <tbody>
               <tr>
                 <td><Button color = "primary">Farm Made Lip Balm</Button></td>
-                <td>-10 Points</td>
+                <td>10 Points</td>
               </tr>
               <tr>
                 <td><Button color = "primary">Farm Made Lotion</Button></td>
-                <td>-10 Points</td>
+                <td>10 Points</td>
               </tr>
               <tr>
                 <td><Button color = "primary">$10 Gift Card</Button></td>
-                <td>-25 Points</td>
+                <td>25 Points</td>
               </tr>
             </tbody>
           </Table>

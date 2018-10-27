@@ -85,9 +85,23 @@ class Profile extends Component {
                             <h1>  {this.state.info.email} </h1>
                         </Col>
                     </Row>
+
+                    <Row>
+                        <Col className = "text-center">
+                            <h1> Points: {this.state.info.total} </h1>
+                        </Col>
+                    </Row>
+
+                    <Row>
+                        <Col className = "text-center">
+                            <h1> Balance: {this.state.info.total} </h1>
+                        </Col>
+                    </Row>
                 
                     <Row>
-                        <Button onClick = {this.logout}> Log Out </Button>
+                        <Col className = "text-center">
+                            <Button onClick = {this.logout}> Log Out </Button>
+                        </Col>
                     </Row>
                 </Container>
             }
