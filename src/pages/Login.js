@@ -22,11 +22,12 @@ class Login extends Component {
         floor: 0,
         referrer: null,
         language: '',
-        newUser: false,
+        newUser: true,
         errors:{}
       };
 
       this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
       this.switch = this.switch.bind(this);
     }
   
@@ -70,12 +71,12 @@ class Login extends Component {
         let user = firebase.auth().currentUser;
         
         this.setState({user:firebase.auth().currentUser})
-        firebase.database().ref('users/' + user.uid).push({
+        firebase.database().ref('users/').child(user.uid).push({
           name: this.state.name,
           email: this.state.email,
           joined: Date.now(),
           language:"",
-          NYCHA:{
+          nycha:{
               location:this.state.location,
               floor:this.state.floor
           },
@@ -108,6 +109,14 @@ class Login extends Component {
         <div className="Sign">
                 <h1>  Make NYCHAS Greener </h1>
 
+                { firebase.auth().currentUser && !this.state.inprogress &&
+                    (<Redirect push to={{
+                        pathname: '/profile',
+                        search: '',
+                        state: { referrer: 'login' }
+                    }} /> )
+                 }
+
                 {this.state.newUser ? 
                 (
                     <Container>
@@ -117,11 +126,8 @@ class Login extends Component {
                             <Container>
                             {/* Get first and last name from user */}
                                 <FormGroup row>
-                                <Col sm={4}>
-                                    <Input type="first name" name="first name" id="first name" placeholder = "First Name" value={this.state.firstname} onChange={this.handleChange}/>
-                                </Col>
-                                <Col sm={4}>
-                                    <Input name="last name" type="last name" placeholder="Last Name" value={this.state.lastname} onChange={this.handleChange} />
+                                <Col sm={6}>
+                                    <Input type="first name" name="first name" id="first name" placeholder = "First Name" value={this.state.name} onChange={this.handleChange}/>
                                 </Col>
                                 </FormGroup>
                             {/* Get email from user */}
@@ -130,34 +136,36 @@ class Login extends Component {
                                     <Input name="email" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
                                 </Col>
                                 <Col sm={4}>
-                                    <Input name="email" type="text" placeholder="Confirm Email" value={this.state.email} onChange={this.handleChange} />
+                                    <Input name="email" type="text" placeholder="Confirm Email" value={this.state.confirmEmail} onChange={this.handleChange} />
                                 </Col>
                                 </FormGroup>
                                 
                             {/* Get password from user */}
                                 <FormGroup row>
                                 <Col sm={4} >
-                                    <Input name="password" type="text" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
+                                    <Input name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
                                 </Col>
                                 <Col sm={4}>
-                                    <Input name="password" type="text" placeholder="Confirm Password" value={this.state.password} onChange={this.handleChange} />
+                                    <Input name="password" type="password" placeholder="Confirm Password" value={this.state.confirmPassword} onChange={this.handleChange} />
                                 </Col>
                                 </FormGroup>
                             
-                            <FormGroup>
-                            <Label for="Borough Name">Building Name</Label>
-                            <Input type="select" name="Borough Name" id="Borough Name" defaultValue = "Borough Name">
-                            <option>Brooklyn</option>
-                            <option>Bronx</option>
-                            <option>Manhatten</option>
-                            <option>Staten Island</option>
-                            </Input>
+                            <FormGroup row>
+                                <Label for="Borough Name">Building Name</Label>
+                                <Input type="select" name="Borough Name" id="Borough Name" defaultValue = "Borough Name">
+                                    <option>Brooklyn</option>
+                                    <option>Bronx</option>
+                                    <option>Manhatten</option>
+                                    <option>Staten Island</option>
+                                </Input>
                             </FormGroup>
+
+                            <Button onClick={this.handleSubmit}>Create Account</Button>
+                            <Button onClick={this.switch}>Returning User? Sign In</Button>
                             
                             </Container>
                         </Form>
                         
-                        <Button onClick={this.switch}>Returning User? Sign In</Button>
                     </Container>
  
       

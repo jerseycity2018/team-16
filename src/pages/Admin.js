@@ -15,7 +15,8 @@ class Admin extends Component {
     this.state = {
       user: user,
       loading:true,
-      info: null
+      info: null,
+      isAdmin:false
     };
     this.logout = this.logout.bind(this);
   }
@@ -52,6 +53,13 @@ class Admin extends Component {
   render() {
       return (
         <div className = "App" id="profile">
+            { !this.state.isAdmin &&
+                (<Redirect push to={{
+                    pathname: '/profile',
+                    search: '',
+                    state: { referrer: 'signup' }
+                }} /> )
+            }
             <Container>
                 <h1> My Profile</h1>
                 <Row>

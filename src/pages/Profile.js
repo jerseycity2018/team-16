@@ -52,12 +52,23 @@ class Profile extends Component {
   render() {
       return (
         <div className = "App" id="profile">
-            <Container>
-                <h1> My Profile</h1>
-                <Row>
-                    <p> push test</p>
-                </Row>
-            </Container>
+            { !firebase.auth().currentUser &&
+                (<Redirect push to={{
+                    pathname: '/login',
+                    search: '',
+                    state: { referrer: 'signup' }
+                }} /> )
+            }
+            {this.state.info && 
+                <Container>
+                    <h1> {this.state.info.email} </h1>
+                    <Row>
+                        <p> push test</p>
+                        <Button onClick = {this.logout}> Log Out </Button>
+                    </Row>
+                </Container>
+            }
+    
         </div>
 
       );
