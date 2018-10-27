@@ -19,7 +19,7 @@ class Login extends Component {
         confirmEmail: '',
         password: '',
         confirmPassword: '',
-        newUser: false,
+        newUser: true,
         errors:{}
       };
 
@@ -88,15 +88,14 @@ class Login extends Component {
                 {this.state.newUser ? 
                 (
                     <Container>
-                        <h1> Log In </h1>
+                        <h1>Sign Up </h1>
+                        <Button onClick={this.switch}><span>Sign Up</span></Button>
                     </Container>
-
                 )
                 :
                 (
                     <Container>
-                        <h1>Sign Up </h1>
-                        <Button onClick={this.switch}><span>Sign Up</span></Button>
+                        <h1> Log In </h1>
                     </Container>
                 )}
         </div>
