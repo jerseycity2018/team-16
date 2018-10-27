@@ -151,13 +151,15 @@ class Login extends Component {
                                 </FormGroup>
                             
                             <FormGroup row>
-                                <Label for="Borough Name">Building Name</Label>
-                                <Input type="select" name="Borough Name" id="Borough Name" defaultValue = "Borough Name">
-                                    <option>Brooklyn</option>
-                                    <option>Bronx</option>
-                                    <option>Manhatten</option>
-                                    <option>Staten Island</option>
-                                </Input>
+                                <Col sm={4}>
+                                    <Label for="Borough Name">Building Name</Label>
+                                    <Input type="select" name="Borough Name" id="Borough Name" defaultValue = "Borough Name">
+                                        <option>Brooklyn</option>
+                                        <option>Bronx</option>
+                                        <option>Manhatten</option>
+                                        <option>Staten Island</option>
+                                    </Input>
+                                </Col>
                             </FormGroup>
 
                             <Button onClick={this.handleSubmit}>Create Account</Button>
