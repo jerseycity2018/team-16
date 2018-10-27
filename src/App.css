@@ -4,8 +4,8 @@
     margin: 0 auto;
 }
 
-.background-white {
-    background-color: blue !important;
+.background-color{
+    background-color: #fefbd8;
 }
 
 
@@ -43,7 +43,10 @@
            transform: translate(-920%, 150%) 
         }
 
-.Component{
-background-color: #f1f1f1
+.cal-container{
+    width:100%;
+    position: static;
+    margin:300px auto ;  
+    text-align:center;
 }
 
