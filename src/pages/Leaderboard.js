@@ -92,17 +92,36 @@ class Leaderboard extends Component {
 
   render() {
       return (
-        <div className = "App" id="profile">
-            <Container>
-            {this.state.userRankings && this.state.userRankings[0]}
-            </Container>
-        </div>
-        );
+        <Table striped>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Borough</th>
+            <th>Lifetime Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>John Doe</td>
+            <td>Brooklyn</td>
+            <th>1350</th>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jane Doe</td>
+            <td>Staten Island</td>
+            <th>1200</th>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry Johnson</td>
+            <td>Bronx</td>
+            <th>1175</th>
+          </tr>
+        </tbody>
+      </Table>
+    );
     }
 }
-
-
-
-
-
-export default Leaderboard;
