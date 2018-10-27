@@ -18,6 +18,7 @@ const loadApp = function(){
                     <Route path="/login" component={Login}/>
                     <Route path="/profile" component={Profile}/>
                     <Route path="/admin" component={Admin}/>
+                    {/* <Route path="/faq" component={FAQ}/> */}
                 </Switch>
             </BrowserRouter>
       ), document.getElementById('root'))

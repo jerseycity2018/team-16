@@ -27,7 +27,8 @@ class Login extends Component {
       };
 
       this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+      this.signup = this.signup.bind(this);
+      this.login = this.login.bind(this);
       this.switch = this.switch.bind(this);
     }
   
@@ -61,6 +62,18 @@ class Login extends Component {
         console.log(error.code + ": " + error.message)
         });
 
+    }
+
+    login(event){
+        event.preventDefault();
+
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+        .then(() => {
+
+        }).catch(function(error) {
+        // Handle Errors here.
+        this.setState({errors:error.message});
+        });
     }
 
     switch(){
@@ -187,7 +200,7 @@ class Login extends Component {
 
                                     <FormGroup row>
                                         <Col className = "text-center">
-                                            <Button onClick={this.switch}>Login</Button>
+                                            <Button onClick={this.login}>Login</Button>
                                         </Col>
                                     </FormGroup>
                                 }
@@ -198,9 +211,13 @@ class Login extends Component {
                                         </Col>
                                     </FormGroup>
                                 }
-
-
-
+                                {this.state.newUser &&
+                                    <FormGroup row>
+                                        <Col className = "text-center">
+                                            <Button onClick={this.switch}>Back to User Login</Button>
+                                        </Col>
+                                    </FormGroup>
+                                }
                             
                             </Container>
                         </Form>
