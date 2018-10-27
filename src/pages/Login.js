@@ -141,9 +141,7 @@ class Login extends Component {
 
                         <Row>
                             <Col className = "text-center">
-
                                 <h1> Login </h1>
-
                                 <h1> {this.state.newUser ? "Sign Up!" : "Log In"} </h1>
                             </Col>
                         </Row>
@@ -229,7 +227,7 @@ class Login extends Component {
                                         </Col>
                                     </FormGroup>
                                 }
-                            
+
                             </Container>
                         </Form>
 
