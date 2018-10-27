@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import '../App.css';
 import firebase, { auth } from '../firebase.js';
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link} from 'react-router-dom'
 import { Button, Col, Row, Container, Collapse,
   Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,
   UncontrolledDropdown, DropdownToggle, DropdownMenu,DropdownItem, Table
 } from 'reactstrap';
 
-import Rewardmarket from "./Rewardmarket.js"
+import Menu from "../Menu.js";
 
 class Profile extends Component {
   constructor(props) {
@@ -16,9 +16,12 @@ class Profile extends Component {
     this.state = {
       user: user,
       loading:true,
-      info: null
+      info: null,
+      collapsed:false
     };
+
     this.logout = this.logout.bind(this);
+    this.toggleNavbar = this.toggleNavbar.bind(this);
   }
 
   logout(e) {
@@ -26,7 +29,11 @@ class Profile extends Component {
     auth.signOut()
   }
 
-//Testing git.
+  toggleNavbar() {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
+  }
 
   componentDidMount(){
     const currentUser = firebase.auth().currentUser
@@ -53,31 +60,36 @@ class Profile extends Component {
   render() {
       return (
         <div className = "App" id="profile">
-
-            <Container>
-                <h1> My Profile</h1>
-                <Row>
-                    <p> push test</p>
-                </Row>
- 
-            
             { !firebase.auth().currentUser &&
-                (<Redirect push to={{
-                    pathname: '/login',
-                    search: '',
-                    state: { referrer: 'signup' }
-                }} /> )
+                    (<Redirect push to={{
+                        pathname: '/login',
+                        search: '',
+                        state: { referrer: 'signup' }
+                    }} /> )
             }
+
+            <Menu />
+            <Container>
+
             {this.state.info &&
                 <Container>
-                    <h1> {this.state.info.email} </h1>
                     <Row>
-                        <p> push test</p>
+                        <Col className = "text-center">
+                            <h1>  {this.state.info.name} </h1>
+                        </Col>
+                    </Row>
+            
+                    <Row>
+                        <Col className = "text-center">
+                            <h1>  {this.state.info.email} </h1>
+                        </Col>
+                    </Row>
+                
+                    <Row>
                         <Button onClick = {this.logout}> Log Out </Button>
                     </Row>
                 </Container>
             }
-            
             </Container>
         </div>
 

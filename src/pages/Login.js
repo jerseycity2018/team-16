@@ -59,7 +59,7 @@ class Login extends Component {
             this.addUserToDatabase();
           });;
         })
-        .catch(function(error) {
+        .catch((error) => {
         // Handle Errors here.
         console.log(error.code + ": " + error.message)
         });
@@ -72,9 +72,9 @@ class Login extends Component {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then(() => {
 
-        }).catch(function(error) {
+        }).catch((error) => {
         // Handle Errors here.
-        this.setState({errors:error.message});
+        this.setState({errors:error.code});
         });
     }
 
@@ -108,10 +108,10 @@ class Login extends Component {
                 this.setState({inprogress:false})
             })
         })
-        .catch(function(error) {
-        // Handle Errors here.
-        console.log(error.code + ": " + error.message);
-        this.setState({errors:error.message});
+        .catch((error) => {
+            // Handle Errors here.
+            console.log(error.code + ": " + error.message);
+            this.setState({errors:error.message});
         });
 
       }

@@ -7,7 +7,7 @@ import { Button, Col, Row, Container, Collapse,
   UncontrolledDropdown, DropdownToggle, DropdownMenu,DropdownItem,
 } from 'reactstrap';
 
-
+import Menu from "../Menu.js";
 
 class Leaderboard extends Component {
   constructor(props) {
@@ -68,22 +68,22 @@ class Leaderboard extends Component {
       })
     }
 
-    const usersRef = firebase.database().ref('users/total').orderByValue();
-    usersRef.on('value', (snapshot) => {
-        let newState = [];
-        console.log(snapshot)
-        snapshot = snapshot.val();
-        snapshot.forEach(function(childSnapshot) {
-        newState.push({
-            user: childSnapshot.uid,
-            points: childSnapshot.val().lifetime,
-        });
-    });
+    // const usersRef = firebase.database().ref('leaderboard').child('byUsers').orderByValue();
+    // usersRef.on('value', (snapshot) => {
+    //         let newState = [];
+    //         console.log(snapshot)
+    //         snapshot = snapshot.val();
+    //         snapshot.forEach(function(childSnapshot) {
+    //             newState.push({
+    //                 user: childSnapshot.uid,
+    //                 points: childSnapshot.val().lifetime,
+    //             });
+    //         });
 
-    this.setState({
-        userRankings: newState
-    });
-});
+    //     this.setState({
+    //         userRankings: newState
+    //     });
+    // });
 
 
 
@@ -93,8 +93,10 @@ class Leaderboard extends Component {
   render() {
       return (
         <div className = "App" id="profile">
+            <Menu />
             <Container>
-            {this.state.userRankings && this.state.userRankings[0]}
+              Leaderboard
+              {this.state.userRankings && this.state.userRankings[0]}
             </Container>
         </div>
         );
