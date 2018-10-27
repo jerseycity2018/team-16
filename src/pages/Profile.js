@@ -4,9 +4,10 @@ import firebase, { auth } from '../firebase.js';
 import { Redirect } from 'react-router-dom'
 import { Button, Col, Row, Container, Collapse,
   Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,
-  UncontrolledDropdown, DropdownToggle, DropdownMenu,DropdownItem,
+  UncontrolledDropdown, DropdownToggle, DropdownMenu,DropdownItem, Table
 } from 'reactstrap';
 
+import Rewardmarket from "./Rewardmarket.js"
 
 class Profile extends Component {
   constructor(props) {
@@ -52,6 +53,14 @@ class Profile extends Component {
   render() {
       return (
         <div className = "App" id="profile">
+
+            <Container>
+                <h1> My Profile</h1>
+                <Row>
+                    <p> push test</p>
+                </Row>
+ 
+            
             { !firebase.auth().currentUser &&
                 (<Redirect push to={{
                     pathname: '/login',
@@ -59,7 +68,7 @@ class Profile extends Component {
                     state: { referrer: 'signup' }
                 }} /> )
             }
-            {this.state.info && 
+            {this.state.info &&
                 <Container>
                     <h1> {this.state.info.email} </h1>
                     <Row>
@@ -68,7 +77,8 @@ class Profile extends Component {
                     </Row>
                 </Container>
             }
-    
+            
+            </Container>
         </div>
 
       );

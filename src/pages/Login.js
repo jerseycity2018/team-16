@@ -119,7 +119,9 @@ class Login extends Component {
     render() {
       return (
 
+
         <div className="Sign">
+
 
                 { firebase.auth().currentUser && !this.state.inprogress &&
                     (<Redirect push to={{
@@ -130,6 +132,7 @@ class Login extends Component {
                  }
 
                     <Container>
+
                         <Row>
                             <Col className = "text-center">
                                 <h1>  Make NYCHAS Greener </h1>
@@ -151,6 +154,7 @@ class Login extends Component {
 
                             <Collapse isOpen = {this.state.newUser}>
                                 <FormGroup row>
+
                                     <Col className = "col-centered" sm={6}>
                                         <Input  name="name"  placeholder = "Name" value={this.state.name} onChange={this.handleChange}/>
                                     </Col>
@@ -158,6 +162,7 @@ class Login extends Component {
                             </Collapse>
                             {/* Get email from user */}
                                 <FormGroup row>
+
                                     <Col  className = "col-centered" sm={6} >
                                         <Input name="email" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
                                     </Col>
@@ -173,6 +178,7 @@ class Login extends Component {
 
                             {/* Get password from user */}
                                 <FormGroup row>
+
                                     <Col className = "col-centered" sm={6} >
                                         <Input name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
                                     </Col>
