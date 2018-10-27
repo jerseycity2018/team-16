@@ -15,19 +15,18 @@ export default class Testprofile extends React.Component {
         <h1> My Profile </h1>
         </Col>
         <div class = "circle"></div>
+        {
         <div class="content">
             <div class="content-block">
-                <p>sldjfa;sldfj</p>
+                <p>You have x points!</p>
             </div>
         </div>
-        </Row>
-        {
-        <li>
-        <a href="https://calendar.google.com/calendar/r?pli=1">
-       <img class="googleCalendar" src="https://calendar.google.com/calendar/r?pli=1" width="40" alt="googleCalendar"></img>
-        </a>
-        </li>
         }
+        </Row>
+        
+        <iframe src="https://calendar.google.com/calendar/embed?src=tbashar09%40gmail.com&ctz=America%2FNew_York" 
+        border="0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        
         </Container>
         )
         }

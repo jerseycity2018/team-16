@@ -105,7 +105,7 @@ class Login extends Component {
 
 
         <div className="Sign">
-
+        
 
                 { firebase.auth().currentUser && !this.state.inprogress &&
                     (<Redirect push to={{

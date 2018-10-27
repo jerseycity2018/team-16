@@ -4,7 +4,7 @@ import firebase, { auth } from '../firebase.js';
 import { Redirect } from 'react-router-dom'
 import { Button, Col, Row, Container, Collapse,
   Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,
-  UncontrolledDropdown, DropdownToggle, DropdownMenu,DropdownItem, Table
+  UncontrolledDropdown, DropdownToggle, DropdownMenu,DropdownItem, Table,
 } from 'reactstrap';
 
 import Rewardmarket from "./Rewardmarket.js"
@@ -52,14 +52,17 @@ class Profile extends Component {
 
   render() {
       return (
+      
         <div className = "App" id="profile">
 
+
             <Container>
+            
                 <h1> My Profile</h1>
                 <Row>
                     <p> push test</p>
                 </Row>
- 
+        
             
             { !firebase.auth().currentUser &&
                 (<Redirect push to={{

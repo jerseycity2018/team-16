@@ -15,7 +15,7 @@
      margin-left: 450px;
      margin-top: 100px;
      border-radius: 50%;
-     background-color: #329A2D;
+     background-color: #46C421;
 }
 
 .content {
@@ -24,18 +24,22 @@
         .content-block {
             height: 185px;
             font-family: 'Open Sans', Lucida Sans Console, sans-serif;
-            color: #FFFFFF;
-            position: aboslute;
-            margin-top: 100px;
-            margin-left: 450px;
+            color: #000000;
+            position: relative;
             font-size: 17px;
-            text-align: justify;
+            text-align: center;
+            margin: 0 100px 0 100px;
             padding: 5px 0 5px 0;
         }
+
         .content-block p {
            margin: 0;
            position: absolute;               
            top: 50%;                         
-           transform: translate(0, -50%) 
+           transform: translate(-920%, 150%) 
         }
+
+.Component{
+background-color: #f1f1f1
+}
 
