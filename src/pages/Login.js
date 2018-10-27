@@ -5,8 +5,7 @@ import '../App.css'
 import firebase, { auth, provider } from '../firebase.js'
 
 import { Container , Row, Col, Button, 
-    Form, FormGroup,FormText, 
-    Input,FormFeedback
+    Form, FormGroup, Input, Check, Label
   } from 'reactstrap';
 
 
@@ -103,9 +102,9 @@ class Login extends Component {
   
       }
 
-
     render() {
       return (
+
         <div className="Sign">
                 <h1>  Make NYCHAS Greener </h1>
 
@@ -113,21 +112,55 @@ class Login extends Component {
                 (
                     <Container>
                         <h1>Sign Up </h1>
-                        <Button onClick={this.switch}>Sign Up</Button>
+                        
                         <Form>
                             <Container>
+                            {/* Get first and last name from user */}
                                 <FormGroup row>
                                 <Col sm={4}>
-                                    <Input name="name" type="text" placeholder="name" value={this.state.name} onChange={this.handleChange} />
+                                    <Input type="first name" name="first name" id="first name" placeholder = "First Name" value={this.state.firstname} onChange={this.handleChange}/>
                                 </Col>
+                                <Col sm={4}>
+                                    <Input name="last name" type="last name" placeholder="Last Name" value={this.state.lastname} onChange={this.handleChange} />
+                                </Col>
+                                </FormGroup>
+                            {/* Get email from user */}
+                                <FormGroup row>
                                 <Col sm={4} >
-                                    <Input name="email" type="text" placeholder="email@domain.com" value={this.state.email} onChange={this.handleChange} />
+                                    <Input name="email" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
+                                </Col>
+                                <Col sm={4}>
+                                    <Input name="email" type="text" placeholder="Confirm Email" value={this.state.email} onChange={this.handleChange} />
                                 </Col>
                                 </FormGroup>
                                 
+                            {/* Get password from user */}
+                                <FormGroup row>
+                                <Col sm={4} >
+                                    <Input name="password" type="text" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
+                                </Col>
+                                <Col sm={4}>
+                                    <Input name="password" type="text" placeholder="Confirm Password" value={this.state.password} onChange={this.handleChange} />
+                                </Col>
+                                </FormGroup>
+                            
+                            <FormGroup>
+                            <Label for="Borough Name">Building Name</Label>
+                            <Input type="select" name="Borough Name" id="Borough Name" defaultValue = "Borough Name">
+                            <option>Brooklyn</option>
+                            <option>Bronx</option>
+                            <option>Manhatten</option>
+                            <option>Staten Island</option>
+                            </Input>
+                            </FormGroup>
+                            
                             </Container>
                         </Form>
+                        
+                        <Button onClick={this.switch}>Sign Up</Button>
                     </Container>
+ 
+      
                 )
                 :
                 (
@@ -135,8 +168,13 @@ class Login extends Component {
                         <h1> Log In </h1>
                     </Container>
                 )}
-        </div>
-      );
+    
+
+                
+
+                
+            </div>
+        );
     }
   }
 
