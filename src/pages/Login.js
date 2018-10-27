@@ -4,6 +4,12 @@ import { LinkContainer } from 'react-router-bootstrap'
 import '../App.css'
 import firebase, { auth, provider } from '../firebase.js'
 
+import { Container , Row, Col, Button, 
+    Form, FormGroup,FormText, 
+    Input,FormFeedback
+  } from 'reactstrap';
+
+
 class Login extends Component {
     constructor(props) {
       super(props);
@@ -13,11 +19,12 @@ class Login extends Component {
         confirmEmail: '',
         password: '',
         confirmPassword: '',
-        user: firebase.auth().currentUser,
+        newUser: false,
         errors:{}
       };
 
-
+      this.handleChange = this.handleChange.bind(this);
+      this.switch = this.switch.bind(this);
     }
   
     handleChange(event) {
@@ -29,6 +36,10 @@ class Login extends Component {
     handleSubmit(event) {
       event.preventDefault();
 
+    }
+
+    switch(){
+        this.setState({newUser: !this.state.newUser})
     }
 
     addUserToDatabase(){
@@ -72,8 +83,22 @@ class Login extends Component {
     render() {
       return (
         <div className="Sign">
-         <h1> BIG BRAIN GREEN CITY</h1>
-         
+                <h1>  Make NYCHAS Greener </h1>
+
+                {this.state.newUser ? 
+                (
+                    <Container>
+                        <h1> Log In </h1>
+                    </Container>
+
+                )
+                :
+                (
+                    <Container>
+                        <h1>Sign Up </h1>
+                        <Button onClick={this.switch}><span>Sign Up</span></Button>
+                    </Container>
+                )}
         </div>
       );
     }
