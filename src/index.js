@@ -14,7 +14,7 @@ const loadApp = function(){
     render((
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/" component={App}/>
+                    <Route exact path="/" component={Login}/>
                     <Route path="/login" component={Login}/>
                     <Route path="/profile" component={Profile}/>
                     <Route path="/admin" component={Admin}/>
@@ -24,7 +24,9 @@ const loadApp = function(){
 }
 
 
-loadApp();
+firebase.auth().onAuthStateChanged(user => {
+    loadApp();
+});
 
 
 
