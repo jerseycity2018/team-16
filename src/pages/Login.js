@@ -83,7 +83,8 @@ class Login extends Component {
           referrals:{
             count:0,
             referrer:null
-          }
+          },
+          role:"user"
         })
         .then(() => {
             this.setState({inprogress:false})
