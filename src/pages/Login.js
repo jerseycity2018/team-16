@@ -157,7 +157,7 @@ class Login extends Component {
                             </Container>
                         </Form>
                         
-                        <Button onClick={this.switch}>Sign Up</Button>
+                        <Button onClick={this.switch}>Returning User? Sign In</Button>
                     </Container>
  
       
@@ -166,6 +166,7 @@ class Login extends Component {
                 (
                     <Container>
                         <h1> Log In </h1>
+                        <Button onClick={this.switch}>New User? Sign Up</Button>
                     </Container>
                 )}
     
