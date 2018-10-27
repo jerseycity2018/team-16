@@ -110,7 +110,7 @@ class Login extends Component {
                             <Container>
                             {/* Get first and last name from user */}
                                 <FormGroup row>
-                                <Col sm={4}>
+                                <Col sm={{ size: 4, offset: 2 }}>
                                     <Input type="first name" name="first name" id="first name" placeholder = "First Name" value={this.state.firstname} onChange={this.handleChange}/>
                                 </Col>
                                 <Col sm={4}>
@@ -119,7 +119,7 @@ class Login extends Component {
                                 </FormGroup>
                             {/* Get email from user */}
                                 <FormGroup row>
-                                <Col sm={4} >
+                                <Col sm={{ size: 4, offset: 2 }} >
                                     <Input name="email" type="text" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
                                 </Col>
                                 <Col sm={4}>
@@ -129,7 +129,7 @@ class Login extends Component {
                                 
                             {/* Get password from user */}
                                 <FormGroup row>
-                                <Col sm={4} >
+                                <Col sm={{ size: 4, offset: 2 }} >
                                     <Input name="password" type="text" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
                                 </Col>
                                 <Col sm={4}>
@@ -137,7 +137,8 @@ class Login extends Component {
                                 </Col>
                                 </FormGroup>
                             
-                            <FormGroup>
+                            <FormGroup row center>
+                            <Col sm={{ size: 4, offset: 4}}>
                             <Label for="Borough Name">Building Name</Label>
                             <Input type="select" name="Borough Name" id="Borough Name" defaultValue = "Borough Name">
                             <option>Brooklyn</option>
@@ -145,6 +146,7 @@ class Login extends Component {
                             <option>Manhatten</option>
                             <option>Staten Island</option>
                             </Input>
+                            </Col>
                             </FormGroup>
                             
                             </Container>
