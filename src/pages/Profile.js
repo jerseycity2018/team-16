@@ -52,12 +52,12 @@ class Profile extends Component {
 
   render() {
       return (
-      
+        
         <div className = "App" id="profile">
-
+        
 
             <Container>
-            
+            <div class = "background-white"></div>
                 <h1> My Profile</h1>
                 <Row>
                     <p> push test</p>

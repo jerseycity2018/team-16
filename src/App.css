@@ -4,6 +4,10 @@
     margin: 0 auto;
 }
 
+.background-white {
+    background-color: blue !important;
+}
+
 
 .circle{
      width: 300px;
