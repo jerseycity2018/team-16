@@ -72,53 +72,52 @@ class Profile extends Component {
             <Menu/>
             </Container>
 
-            {this.state.info &&
-                <Container>
-                    <Row>
-                        <Col className = "text-center">
-                            <h1>  {this.state.info.name} </h1>
-                        </Col>
-                    </Row>
-            
-                    <Row>
-                        <Col className = "text-center">
-                            <h1>  {this.state.info.email} </h1>
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Col className = "text-center">
-                            <h1> Points: {this.state.info.total} </h1>
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Col className = "text-center">
-                            <h1> Balance: {this.state.info.total} </h1>
-                        </Col>
-                    </Row>
-                
-                    <Row>
-                        <Col className = "text-center">
-                            <Button onClick = {this.logout}> Log Out </Button>
-                        </Col>
-                    </Row>
-                </Container>
-            }
             
             <Container>
-        <div class = "circle">
+                <Row>
+                    <Col class = "text-center">
+                        <div className = "circle">
+                            {this.state.info &&
+                                    <Container>
+                                        <Row>
+                                            <Col className = "text-center">
+                                                <h1>  {this.state.info.name} </h1>
+                                            </Col>
+                                        </Row>
+                                
+                                        <Row>
+                                            <Col className = "text-center">
+                                                <h1>  {this.state.info.email} </h1>
+                                            </Col>
+                                        </Row>
 
-        </div>
+                                        <Row>
+                                            <Col className = "text-center">
+                                                <h1> Points: {this.state.info.total} </h1>
+                                            </Col>
+                                        </Row>
+
+                                        <Row>
+                                            <Col className = "text-center">
+                                                <h1> Balance: {this.state.info.total} </h1>
+                                            </Col>
+                                        </Row>
+                                    
+                                        <Row>
+                                            <Col className = "text-center">
+                                                <Button onClick = {this.logout}> Log Out </Button>
+                                            </Col>
+                                        </Row>
+                                    </Container>
+                                }
+                        </div>
+                    </Col>
+            </Row>
         
         <div class="cal-container">
         <iframe src="https://calendar.google.com/calendar/embed?src=tbashar09%40gmail.com&ctz=America%2FNew_York" 
         border="0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
-        
-        
-
-            
         
         </Container>
         </div>
